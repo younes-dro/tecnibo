@@ -233,10 +233,14 @@ class Tecnibo{
             return;
                  
         }
+        
+        if( is_admin() ){
+            add_action ( 'init' , array ( $this , 'tecnibo_cpt' ) );
+        }
     }
 
-    public function add_tooltip_cpt(){
-        Tecnibo_Admin::create_tooltip();
+    public function tecnibo_cpt(){
+        Tecnibo_Portfolio::create_cpt_product();
     }
 
 
