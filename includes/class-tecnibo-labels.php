@@ -30,16 +30,20 @@ class Tecnibo_Labels {
             'labels' => $labels,
             'description' => __('Add Products for Tecnibo Web site', 'tecnibo'),
             'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'rewrite' => array ( 'slug' => 'tecnibo-product'),
+            'capability_type' => 'post',
+            'hierarchical' => false,
             'menu_position' => 5,
             'menu_icon' => dirname(plugin_dir_url(__FILE__)) . '/assets/images/tecnibo-logo.png',
             'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-            'has_archive' => true,
-            'rewrite' => array(
-                'slug' => 'product'
-            )
+            'has_archive' => true, 
+            'taxonomies' => array( 'product_category' ),
         );
 
-        $posttypes['product'] = array(
+        $posttypes['tecnibo_product'] = array(
             'posttype_options' => $args
         );
         
@@ -65,12 +69,16 @@ class Tecnibo_Labels {
         );
 
         $taxonomies['product_category'] = array(
-            'post_types' => array('product'), // ID post type
+            'post_types' => array('tecnibo_product'), // ID post type
             'description' => 'Product Category',
             'options' => array(
-                'labels' => $product_category,
-                'hierarchical' => true,
-                'rewrite' => array('slug' => 'tecnibo-product-category', 'with_front' => false)
+            'labels' => $product_category,
+            'public' => true,
+            'hierarchical' => true,
+            'rewrite' => array(
+                    'slug' => 'tecnibo-product-category',
+                    'with_front' => true
+                    )
             ),
         );
         

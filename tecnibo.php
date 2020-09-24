@@ -233,14 +233,33 @@ class Tecnibo{
             return;
                  
         }
+        add_action ( 'init' , array ( $this , 'tecnibo_cpt' ) );
+        add_filter( 'single_template', array ( $this , 'load_product_template' ) );
+        add_action( 'wp_enqueue_scripts', array ( $this , 'enqueue_frontend_assets' ) , 10 ); 
         
-        if( is_admin() ){
-            add_action ( 'init' , array ( $this , 'tecnibo_cpt' ) );
-        }
+        /************************ ocean customizer */
+        new Ocean_Custom_Style();
     }
 
     public function tecnibo_cpt(){
         Tecnibo_Portfolio::create_cpt_product();
+    }
+    public function load_product_template( $single ){
+        
+        global $post;
+        if ( $post->post_type == 'tecnibo_product' ) {
+            if ( file_exists( $this->plugin_path() . '/template/single-product.php' ) ) {
+                return $this->plugin_path() . '/template/single-product.php';
+            }
+        }
+
+        return $single;        
+    }
+    public function enqueue_frontend_assets(){
+        global $post;
+        if ( $post->post_type == 'tecnibo_product' ) {
+             wp_enqueue_style( 'tecnibo-product-css', $this->plugin_url() . '/assets/tecnibo-product.css' );
+        }        
     }
 
 
