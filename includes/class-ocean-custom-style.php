@@ -12,7 +12,7 @@ class Ocean_Custom_Style {
     public function __construct(){
         add_filter( 'ocean_display_page_header', array ( $this , 'disable_title' ) );
         add_filter( 'ocean_post_layout_class', array ( $this , 'product_layout_class' ), 20 );
-        add_filter( 'ocean_main_metaboxes_post_types', array ( $this , 'oceanwp_metabox' ), 20 );       
+//        add_filter( 'ocean_main_metaboxes_post_types', array ( $this , 'oceanwp_metabox' ), 20 );       
     }
     public function disable_title( $return ){
         global $post;

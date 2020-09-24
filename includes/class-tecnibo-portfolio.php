@@ -26,17 +26,30 @@ class Tecnibo_Portfolio {
     public static function create_cpt_product(){
 
         /**
-         * Create the Post Types 
+         * Create the Product Custom Post Type
          */
         $dro_post_type = new DRO_PostType( Tecnibo_Labels::get_posttype() );
         $dro_post_type->register_post_type();
 
         /**
-         * Create the taxonomies
+         * Create the Product Category taxonomies
          */
         $dro_taxonomies = new DRO_Taxonomies( Tecnibo_Labels::get_taxonomies() );
         $dro_taxonomies->create_taxanomies();
+        
+        /**
+         * Create the Projects Custom Post Type
+         */
+        $dro_project_post_type = new DRO_PostType( Tecnibo_Labels::get_project_posttype() );
+        $dro_project_post_type->register_post_type();  
+        
+       Tecnibo_Portfolio::add_project_menu();
              
+    }
+    public static function add_project_menu(){
+//    $existing_CPT_menu = 'edit.php?post_type=tecnibo_product';
+//    $link_our_new_CPT = 'edit.php?post_type=tecnibo_product';
+//    add_submenu_page($existing_CPT_menu, 'SubmenuTitle', 'SubmenuTitle', 'manage_options', $link_our_new_CPT);        
     }
  
 }

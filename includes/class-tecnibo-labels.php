@@ -10,7 +10,7 @@ class Tecnibo_Labels {
 
     public static function get_posttype() {
 
-
+        /* Product */
         $labels = array(
             'name' => __('Products', 'tecnibo'),
             'singular_name' => __('Product', 'tecnibo'),
@@ -84,5 +84,46 @@ class Tecnibo_Labels {
         
         return $taxonomies;
     }
+    
+    public static function get_project_posttype() {
+
+        /* Product */
+        $labels = array(
+            'name' => __('Projects', 'tecnibo'),
+            'singular_name' => __('Project', 'tecnibo'),
+            'add_new' => __('Add New', 'tecnibo'),
+            'add_new_item' => __('Add New Project', 'tecnibo'),
+            'edit_item' => __('Edit Project', 'tecnibo'),
+            'new_item' => __('New Project', 'tecnibo'),
+            'all_items' => __('All Projects', 'tecnibo'),
+            'view_item' => __('View Project', 'tecnibo'),
+            'search_items' => __('Search Project', 'tecnibo'),
+            'not_found' => __('No Projects found', 'tecnibo'),
+            'not_found_in_trash' => __('No Projects found in the Trash'),
+            'parent_item_colon' => '',
+            'menu_name' => 'Tecnibo'
+        );
+        $args = array(
+            'labels' => $labels,
+            'description' => __('Add Projects for Tecnibo Web site', 'tecnibo'),
+            'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'rewrite' => array ( 'slug' => 'tecnibo-projects'),
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'menu_position' => Null,
+            'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+            'has_archive' => true,
+            'show_in_menu' => 'edit.php?post_type=tecnibo_product'
+        );
+
+        $posttypes['tecnibo_project'] = array(
+            'posttype_options' => $args
+        );
+        
+        return $posttypes;
+    }    
 
 }
