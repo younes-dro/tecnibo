@@ -50,19 +50,18 @@ class Tecnibo_Portfolio {
     }
     
     public function product_metabox( $post_object ){
-
-	$html = '';
-	$appended_projects = get_post_meta( $post_object->ID, 'project',false );
         
-        var_dump($appended_projects);
+	$appended_projects = get_post_meta( $post_object->ID, '_related_projects',false );
+        
 	/*
 	 * Select Projects with AJAX search
 	 */
+        $html = '';
 	$html .= '<p><label for="tecnibo_projects">'.__( 'Projects:','tecnibo').'</label><br />';
         $html .= '<select id="tecnibo_projects" name="tecnibo_projects[]" multiple="multiple" style="width:99%;max-width:25em;">';
  
 	if( $appended_projects ) {
-		foreach( $appended_projects as $project_id ) {
+		foreach( $appended_projects[0] as $project_id ) {
 			$title = get_the_title( $project_id );
 			// if the project title is too long, truncate it and add "..." at the end
 			$title = ( mb_strlen( $title ) > 50 ) ? mb_substr( $title, 0, 49 ) . '...' : $title;
@@ -75,20 +74,27 @@ class Tecnibo_Portfolio {
     }
 
     public static function save_product_metabox ( $post_id ){
-       
-        var_dump( $_POST);
-//	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
- 
-	// if post type is different from our selected one, do nothing
-	if ( $post->post_type == 'tecnibo_product' ) {
-		if( isset( $_POST['tecnibo_projects'] ) )
-			update_post_meta( $post_id, 'project', $_POST['tecnibo_projects'] );
-		else
-//			delete_post_meta( $post_id, 'project' );
-			update_post_meta( $post_id, 'project','projet' );
-	}
+
+        if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
         
-//	return $post_id;      
+        if ( isset( $_POST['tecnibo_projects'] ) ) {
+
+            $sanitized_data = array();
+
+            $data = (array) $_POST['tecnibo_projects'];
+
+            foreach ($data as $key => $value) {
+
+                $sanitized_data[ $key ] = (int)strip_tags( stripslashes( $value ) );
+
+            }
+
+            update_post_meta( $post_id, '_related_projects', $sanitized_data );
+
+        }  else {
+            delete_post_meta ( $post_id, '_related_projects' );
+        }
+             
     }
  
 }
