@@ -3,9 +3,10 @@
  */
 ;
 jQuery(function($){
-    
+        
+        $('#tecnibo_projects').select2({});
 	// multiple select with AJAX search
-	$('#tecnibo_projects').select2({
+	$('#tecnibo_products').select2({
   		ajax: {
     			url: ajaxurl, // AJAX URL is predefined in WordPress admin
     			dataType: 'json',
@@ -13,11 +14,10 @@ jQuery(function($){
     			data: function (params) {
       				return {
         				q: params.term, // search query
-        				action: 'tecnibo_ajax_request' // AJAX action for admin-ajax.php
+        				action: 'tecnibo_ajax_request_products' // AJAX action for admin-ajax.php
       				};
     			},
     			processResults: function( data ) {
-                                console.log(data);
 				var options = [];
 				if ( data ) {
  
@@ -34,5 +34,5 @@ jQuery(function($){
 			cache: true
 		},
 		minimumInputLength: 3 // the minimum of symbols to input before perform a search
-	});
+	});        
 });

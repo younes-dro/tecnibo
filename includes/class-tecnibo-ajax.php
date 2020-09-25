@@ -8,13 +8,13 @@
  */
 class Tecnibo_Ajax {
     
-    public static function Get_Projects(){
-       
+    public function Get_Products(){
+        
 	$return = array();
 	$search_results = new WP_Query( array( 
 		's' => $_GET['q'],
 		'post_status' => 'publish',
-                'post_type' => 'tecnibo_project' ,
+                'post_type' => 'tecnibo_product' ,
 		'ignore_sticky_posts' => 1,
 		'posts_per_page' => 50, 
                 'orderby' => 'title', 

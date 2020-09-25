@@ -238,6 +238,7 @@ class Tecnibo{
         add_action ( 'add_meta_boxes', array ( $this , 'tecnibo_meta_boxes' ) );
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
+        add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
         
         /******** Scripts */
         add_action( 'admin_enqueue_scripts', array ( $this , 'enqueue_select2_scripts' ) );
@@ -247,8 +248,8 @@ class Tecnibo{
         new Ocean_Custom_Style();
         
         /******* Ajax */
-        add_action( 'wp_ajax_tecnibo_ajax_request', array ( $this , 'tecnibo_ajax_request' ) );
-        add_action( 'wp_ajax_nopriv_tecnibo_ajax_request', array ( $this , 'tecnibo_ajax_request' ) );
+        add_action( 'wp_ajax_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );
+        add_action( 'wp_ajax_nopriv_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );        
     }
 
     public function tecnibo_portfolio(){
@@ -280,8 +281,8 @@ class Tecnibo{
              wp_enqueue_style( 'tecnibo-product-css', $this->plugin_url() . '/assets/tecnibo-product.css' );
         }        
     }
-    public function tecnibo_ajax_request(){
-        Tecnibo_Ajax::Get_Projects();
+    public function tecnibo_ajax_request_products() {
+        Tecnibo_Ajax::Get_Products();
     }
 
 
