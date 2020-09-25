@@ -26,6 +26,7 @@ class Tecnibo_Portfolio {
         
         add_meta_box( 'product_metabox', __( 'Select Tecnibo projects that have used this product', 'tecnibo' ), array( $this , 'product_metabox' ), 'tecnibo_product', 'normal', 'default' );
         add_meta_box( 'project_metabox', __( 'Select Tecnibo products that are used by this project', 'tecnibo' ), array( $this , 'project_metabox' ), 'tecnibo_project', 'normal', 'default' );
+        add_meta_box( 'project_details_metabox', __( 'Project Details', 'tecnibo' ), array( $this , 'project_details_metabox' ), 'tecnibo_project', 'normal', 'default' );            
     }
 
     public static function create_portfolio(){
@@ -151,7 +152,75 @@ class Tecnibo_Portfolio {
         }  else {
             delete_post_meta ( $post_id, '_related_products' );
         }
+        
+        if ( isset( $_POST['project_scope'] ) ){
+            
+            update_post_meta( $post_id, '_project_scope', strip_tags( stripslashes( $_POST['project_scope'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_project_scope' );
+        }
+        
+        if ( isset( $_POST['project_client'] ) ){
+            
+            update_post_meta( $post_id, '_project_client', strip_tags( stripslashes( $_POST['project_client'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_project_client' );
+        } 
+        
+        if ( isset( $_POST['project_product'] ) ){
+            
+            update_post_meta( $post_id, '_project_product', strip_tags( stripslashes( $_POST['project_product'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_project_product' );
+        }   
+        
+        if ( isset( $_POST['project_photography'] ) ){
+            
+            update_post_meta( $post_id, '_project_photography', strip_tags( stripslashes( $_POST['project_photography'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_project_photography' );
+        }
+        
+        if ( isset( $_POST['project_video'] ) ){
+            
+            update_post_meta( $post_id, '_project_video', strip_tags( stripslashes( $_POST['project_video'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_project_video' );
+        }        
+        
              
-    }    
+    }
+    public function project_details_metabox($post_object) {
+        
+	$scope          = get_post_meta( $post_object->ID, '_project_scope', true );
+        $client         = get_post_meta( $post_object->ID, '_project_client', true );
+        $product        = get_post_meta( $post_object->ID, '_project_product', true );
+        $photography    = get_post_meta( $post_object->ID, '_project_photography', true );
+        $video          = get_post_meta( $post_object->ID, '_project_video', true );
+        
+        
+        $html = '';
+	$html .= '<p><label for="project_scope">'.__( 'Scope:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="project_scope" name="project_scope" value="'.$scope.'" /> ';
+	$html .= '</p>';
+        
+	$html .= '<p><label for="project_client">'.__( 'Client:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="project_client" name="project_client" value="'.$client.'" />';
+	$html .= '</p>'; 
+        
+	$html .= '<p><label for="project_product">'.__( 'Product:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="project_product" name="project_product" value="'.$product.'" />';
+	$html .= '</p>';         
+
+	$html .= '<p><label for="project_photography">'.__( 'Photography:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="project_photography" name="project_photography" value="'.$photography.'"  />';
+	$html .= '</p>';     
+        
+	$html .= '<p><label for="project_video">'.__( 'Video:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="project_video" name="project_video" value="'.$video.'" />';
+	$html .= '</p>';  
+        
+	echo $html;        
+    }
  
 }
