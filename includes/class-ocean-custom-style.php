@@ -16,7 +16,7 @@ class Ocean_Custom_Style {
     }
     public function disable_title( $return ){
         global $post;
-        if ( $post->post_type == 'tecnibo_product' ) {
+        if ( $post->post_type == 'tecnibo_project' || $post->post_type == 'tecnibo_product' || is_page_template( 'projects-page.php' ) ) {
             $return = false;
         }
         
@@ -24,7 +24,7 @@ class Ocean_Custom_Style {
     }
     public function product_layout_class (){
         global $post;
-        if ( $post->post_type == 'tecnibo_product' ) {	
+        if ( $post->post_type == 'tecnibo_project' || $post->post_type == 'tecnibo_product' || is_page_template( 'projects-page.php' ) ) {	
 		$class = 'full-width';
 	}
 

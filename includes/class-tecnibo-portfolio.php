@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
  * @since 1.0.0
  */
 class Tecnibo_Portfolio {
-    
+        
     public function __construct(){
         
         add_meta_box( 'product_metabox', __( 'Select Tecnibo projects that have used this product', 'tecnibo' ), array( $this , 'product_metabox' ), 'tecnibo_product', 'normal', 'default' );
@@ -216,11 +216,85 @@ class Tecnibo_Portfolio {
         $html .= '<input class="widefat" type="text" id="project_photography" name="project_photography" value="'.$photography.'"  />';
 	$html .= '</p>';     
         
-	$html .= '<p><label for="project_video">'.__( 'Video:','tecnibo').'</label><br />';
-        $html .= '<input class="widefat" type="text" id="project_video" name="project_video" value="'.$video.'" />';
+	$html .= '<p><label for="project_video">'.__( 'Video:(The format video link  https://www.youtube.com/<b>embed</b>/)','tecnibo').'</label><br />';
+        $html .= '<input placeholder="Youtube" class="widefat" type="text" id="project_video" name="project_video" value="'.$video.'" />';
 	$html .= '</p>';  
         
 	echo $html;        
     }
- 
+    public static function has_meta( $meta, $post_id , $single = true){
+        
+        if ( get_post_meta ( $post_id , $meta, $single) )
+                return true;
+        
+        return false;
+    }
+
+    public static function get_product_meta ( $meta_title , $meta , $post_id , $video = false ){
+        $project_meta = get_post_meta( $post_id , $meta ,true);
+        if ( $video ) 
+            return Tecnibo_Portfolio::get_video( $project_meta );
+        
+            return '<p><strong>'.$meta_title.':&nbsp;</strong><em>'.$project_meta.'</em></p>';
+        
+    }
+    public static function get_video( $video_url) {
+        
+        $video = '<iframe width="560" height="315"'
+                . ' src="'.$video_url.'"'
+                . ' frameborder="0" allow="autoplay; encrypted-media" '
+                . 'allowfullscreen></iframe>';
+        
+        return $video;
+    }
+    public static function get_featured_images ( $post_id ){
+        if( class_exists('Dynamic_Featured_Image') ){
+            global $dynamic_featured_image;
+            $featured_images = $dynamic_featured_image->get_featured_images( $post_id ); 
+        
+            return $featured_images;
+        }else{
+            
+            return __( 'Class "Dynamic_Featured_Image" not loaded' , 'tecnibo' );
+        }
+    }
+    public static function get_related_products_projects ( $meta , $post_id  , $post_type  ){
+        
+        $posts = get_post_meta( $post_id , $meta );
+        $related = ( $post_type == 'tecnibo_product') ? __( 'Related Products','tecnibo' ) : __( 'Related Projects' , 'tecnibo' );
+        $search_results = new WP_Query( array (
+            'post_type' => $post_type,
+            'post__in' => $posts[0]
+        ) );
+        $html  = '<div class="divider"><hr class="flush"></div>';
+        $html .= '<h2 class="related_products_projects">'.$related.'</h2>';
+        $html .= '<div class="items">';
+       
+		while( $search_results->have_posts() ) : $search_results->the_post();	
+			$post_thumbnail_url = get_the_post_thumbnail_url( $search_results->post->ID, 'full' ); 
+                        
+			$html .= '<a  href="'.get_the_permalink().'" 
+                                class="" 
+                                rel="group" data-id="'.the_ID().'" 
+                                data-slug="">
+                                <img alt="DOLCE" src="'.$post_thumbnail_url .'">
+                            <span class="hover middleParent" style="line-height: 213px;">
+                                <span class="bg"></span>
+                                <span class="middle">
+                                    <span class="title">'.$search_results->post->post_title.'</span>
+                                    <span class="see">'. __('See details','tecnibo').'</span>
+                                </span>                                
+                            </span>
+                            </a>';
+                           
+                            
+		endwhile;
+                 wp_reset_query();
+        $html .= '</div><!-- #items -->';
+        
+        return $html;
+    }
 }
+
+
+                            

@@ -16,7 +16,7 @@ get_header(); ?>
 
 		<?php //do_action( 'ocean_before_primary' ); ?>
 
-		<div id="primary" class="content-area clr">
+            <div id="primary" class="content-area clr" style="background-color: #f00">
 
 			<?php //do_action( 'ocean_before_content' ); ?>
 

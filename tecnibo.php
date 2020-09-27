@@ -239,7 +239,7 @@ class Tecnibo{
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
-        
+                
         /******** Scripts */
         add_action( 'admin_enqueue_scripts', array ( $this , 'enqueue_select2_scripts' ) );
         add_action( 'wp_enqueue_scripts', array ( $this , 'enqueue_frontend_assets' ) , 10 ); 
@@ -266,19 +266,30 @@ class Tecnibo{
                 return $this->plugin_path() . '/template/single-product.php';
             }
         }
+        if ( $post->post_type == 'tecnibo_project' ) {
+            if ( file_exists( $this->plugin_path() . '/template/single-project.php' ) ) {
+                return $this->plugin_path() . '/template/single-project.php';
+            }
+        }        
 
         return $single;        
-    }
+    }    
     public function enqueue_select2_scripts(){
         wp_enqueue_style('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' );
 	wp_enqueue_script('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ) );
  
-	wp_enqueue_script( 'tecnibo-admin-js', $this->plugin_url() . '/assets/tecnibo-admin.js', array( 'jquery', 'select2' ) );         
+	wp_enqueue_script( 'tecnibo-admin-js', $this->plugin_url() . '/assets/tecnibo-admin.js', array( 'jquery', 'select2' ) );        
     }
     public function enqueue_frontend_assets(){
         global $post;
-        if ( $post->post_type == 'tecnibo_product' ) {
-             wp_enqueue_style( 'tecnibo-product-css', $this->plugin_url() . '/assets/tecnibo-product.css' );
+        if ( $post->post_type == 'tecnibo_product' || $post->post_type == 'tecnibo_project' || is_page_template( 'projects-page.php' ) ) {
+            wp_enqueue_script('tecnibo-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Tecnibo()->version, true);            
+            wp_enqueue_script('tecnibo-front-js', $this->plugin_url() . '/assets/tecnibo-front.js', array('jquery',), Tecnibo()->version, true);            
+            
+            wp_enqueue_style( 'tecnibo-portfolio-css', $this->plugin_url() . '/assets/tecnibo-portfolio.css' );
+            wp_enqueue_style( 'tecnibo-font-portfolio' , 'https://fonts.googleapis.com/css2?family=Merriweather&family=Oswald:wght@300&display=swap', false);
+            wp_enqueue_style( 'tecnibo-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
+            wp_enqueue_style( 'tecnibo-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css'); 
         }        
     }
     public function tecnibo_ajax_request_products() {
