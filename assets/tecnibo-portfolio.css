@@ -7,6 +7,28 @@ body.single-tecnibo_project #site-header.transparent-header,
 body.page-template-projects-page #site-header.transparent-header{
     height: 80px;
 }
+body.single-tecnibo_product.has-transparent-header .page-header, 
+body.single-tecnibo_project.has-transparent-header .page-header,
+body.page-template-projects-page.has-transparent-header .page-header{
+
+    height: 50px;
+    padding: 10px;
+    background-color: #fff;
+    /*border: 1px solid;*/
+    margin-top: 20px;
+    margin-bottom: 10px;    
+}
+body.single-tecnibo_project .site-breadcrumbs a,body.single-tecnibo_project .background-image-page-header .site-breadcrumbs a,
+body.single-tecnibo_product .site-breadcrumbs a,  body.single-tecnibo_product .background-image-page-header .site-breadcrumbs a
+body.page-template-projects-page .site-breadcrumbs a, body.page-template-projects-page .background-image-page-header .site-breadcrumbs a{
+    color: #867e79;
+}
+body.single-tecnibo_product #content-wrap, 
+body.single-tecnibo_project #content-wrap,
+body.page-template-projects-page #content-wrap{
+    padding-top: 10px;
+}
+
 body.single-tecnibo_product h1, body.single-tecnibo_product h2, body.single-tecnibo_product h3, body.single-tecnibo_product h4,body.single-tecnibo_product h5, body.single-tecnibo_product h6,
 body.single-tecnibo_project h1, body.single-tecnibo_project h2, body.single-tecnibo_project h3, body.single-tecnibo_project h4,
 body.single-tecnibo_project h5, body.single-tecnibo_project h6,
