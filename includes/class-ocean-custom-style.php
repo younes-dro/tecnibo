@@ -16,18 +16,26 @@ class Ocean_Custom_Style {
 //        add_filter( 'ocean_main_metaboxes_post_types', array ( $this , 'oceanwp_metabox' ), 20 );       
     }
 
-    public function disable_title($return) {
-        global $post;
-        if ($post->post_type == 'tecnibo_project' || $post->post_type == 'tecnibo_product' || is_page_template('projects-page.php')) {
-            $return = false;
-        }
-
-        return $return;
-    }
+//    public function disable_title($return) {
+//        global $post;
+//        if ($post->post_type == 'tecnibo_project' 
+//                || $post->post_type == 'tecnibo_product' 
+//                || is_page_template('projects-page.php')
+//                || is_tax()
+//                ) {
+//            $return = false;
+//        }
+//
+//        return $return;
+//    }
 
     public function product_layout_class() {
         global $post;
-        if ($post->post_type == 'tecnibo_project' || $post->post_type == 'tecnibo_product' || is_page_template('projects-page.php')) {
+        if ($post->post_type == 'tecnibo_project' 
+                || $post->post_type == 'tecnibo_product' 
+                || is_page_template('projects-page.php')
+                || is_tax()
+                ) {
             $class = 'full-width';
         }
 
@@ -42,12 +50,12 @@ class Ocean_Custom_Style {
     /**
      * Add the OceanWP Settings metabox in your CPT
      */
-    public function oceanwp_metabox($types) {
-        // Your custom post type
-        $types[] = 'tecnibo_product';
-
-        // Return
-        return $types;
-    }
+//    public function oceanwp_metabox($types) {
+//        // Your custom post type
+//        $types[] = 'tecnibo_product';
+//
+//        // Return
+//        return $types;
+//    }
 
 }
