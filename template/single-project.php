@@ -18,8 +18,10 @@ get_header(); ?>
 
 			<div id="content" class="site-content clr">
                             <h2 class="project-title"><?php the_title();?></h2>
+                            <section class="tecnibo-row">
                             <?php the_post_thumbnail('full') ?>
-                            <div class="project-overview-container">
+                            </section>
+                            <section class="tecnibo-row">
                                 <div class="project-overview">
                                     <h3><?php _e( 'Overview', 'tecnibo' )?></h3>
                                     <?php the_excerpt()?>
@@ -39,14 +41,14 @@ get_header(); ?>
                                             echo Tecnibo_Portfolio::get_product_meta ( 'Photography' , '_project_photography' , get_the_ID() ) ;
                                     ?>
                                 </div>
-                            </div>
+                            </section>
                             <div class="divider"><hr class="flush"></div>
                 
                     <?php 
                         $featured_images = Tecnibo_Portfolio::get_featured_images( get_the_ID() );
                         if(count($featured_images) > 0 ){ 
                     ?>
-                            <div class="project-photos">
+                            <section class="project-photos tecnibo-row">
                                 <?php 
                                 foreach ($featured_images as $key => $value) { 
                                 ?>
@@ -54,22 +56,29 @@ get_header(); ?>
                                 <?php  
                                 } 
                                 ?>
-                            </div>
-                    <?php } ?>
+                            </section>
                             <div class="divider"><hr class="flush"></div>
-                            <div>
+                    <?php } ?>
+                            
+                            <section class="tecnibo-row">
                                 <?php the_content() ?>
-                            </div>
-                            <div>
-                                <?php  echo Tecnibo_Portfolio::get_product_meta ( '' , '_project_video' , get_the_ID() , true ) ?></p>
-                            </div>
+                            </section>
+                            <div class="divider"><hr class="flush"></div>
+                            <?php if ( Tecnibo_Portfolio::has_meta( '_project_video' , get_the_ID() ) ){ ?>
+                            <section class="tecnibo-row">
+                                <?php  echo Tecnibo_Portfolio::get_product_meta ( '' , '_project_video' , get_the_ID() , true ); ?>
+                            </section> 
+                            
+                               <?php } ?>
                             <?php
                             // Related Products
                             
-                            if ( Tecnibo_Portfolio::has_meta( '_related_products' , get_the_ID() , false ) )
-                                echo Tecnibo_Portfolio::get_related_products_projects ( '_related_products' , get_the_ID() , 'tecnibo_product' );
-
-                            ?>
+                            if ( Tecnibo_Portfolio::has_meta( '_related_products' , get_the_ID() , false ) ){ ?>
+                            <section class="tecnibo-row">
+                               <?php echo Tecnibo_Portfolio::get_related_products_projects ( '_related_products' , get_the_ID() , 'tecnibo_product' ); ?>
+                            </section>
+                            <div class="divider"><hr class="flush"></div>
+                           <?php } ?>
                             <?php do_action( 'ocean_before_content_inner' ); ?>
 
                             <?php do_action( 'ocean_after_content_inner' ); ?>
