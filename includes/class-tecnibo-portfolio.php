@@ -261,13 +261,13 @@ class Tecnibo_Portfolio {
     public static function get_related_products_projects ( $meta , $post_id  , $post_type  ){
         
         $posts = get_post_meta( $post_id , $meta );
+//        var_dump($posts);
         $related = ( $post_type == 'tecnibo_product') ? __( 'Related Products','tecnibo' ) : __( 'Related Projects' , 'tecnibo' );
         $search_results = new WP_Query( array (
             'post_type' => $post_type,
             'post__in' => $posts[0]
         ) );
-        $html  = '<div class="divider"><hr class="flush"></div>';
-        $html .= '<h2 class="related_products_projects">'.$related.'</h2>';
+        $html .= '<h2 class="related_products_projects"><span>' . $related . '</span></h2>';
         $html .= '<div class="items">';
        
 		while( $search_results->have_posts() ) : $search_results->the_post();	
@@ -275,7 +275,7 @@ class Tecnibo_Portfolio {
                         
 			$html .= '<a  href="'.get_the_permalink().'" 
                                 class="" 
-                                rel="group" data-id="'.the_ID().'" 
+                                rel="group" data-id="'.get_the_ID().'" 
                                 data-slug="">
                                 <img alt="DOLCE" src="'.$post_thumbnail_url .'">
                             <span class="hover middleParent" style="line-height: 213px;">
@@ -291,6 +291,35 @@ class Tecnibo_Portfolio {
 		endwhile;
                  wp_reset_query();
         $html .= '</div><!-- #items -->';
+        
+        return $html;
+    }
+    
+    public static function get_grid_products_projects( $args ){
+        
+        $html   = '<div class="items">';
+        $query = new WP_Query($args);
+        if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+            $html .='<a 
+                    href="'.get_the_permalink().'" 
+                    class="" 
+                    rel="group" data-id="'.get_the_ID().'" data-slug="<?php //?>">
+                    <img alt="" src="'. $featured_img_url .'">
+                    <span class="hover middleParent" style="line-height: 213px;">
+                        <span class="bg"></span>
+                        <span class="middle">
+                            <span class="title">'.get_the_title() .'</span>
+                            <span class="see">'.__( "See details","tecnibo" ).'</span>
+                        </span>                                
+                    </span>
+                    </a>';
+        endwhile; else : 
+                    $html .='<p>'.__( "Sorry, no products or projects  matched your criteria.", "tecnibo") .'</p>';
+        endif;
+        wp_reset_query();
+                                    
+        $html   .='</div>';
         
         return $html;
     }
