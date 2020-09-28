@@ -282,7 +282,11 @@ class Tecnibo{
     }
     public function enqueue_frontend_assets(){
         global $post;
-        if ( $post->post_type == 'tecnibo_product' || $post->post_type == 'tecnibo_project' || is_page_template( 'projects-page.php' ) ) {
+        if ( $post->post_type == 'tecnibo_product' 
+                || $post->post_type == 'tecnibo_project' 
+                || is_page_template( 'projects-page.php' ) 
+                || is_tax()
+                ) {
             wp_enqueue_script('tecnibo-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Tecnibo()->version, true);            
             wp_enqueue_script('tecnibo-front-js', $this->plugin_url() . '/assets/tecnibo-front.js', array('jquery',), Tecnibo()->version, true);            
             
