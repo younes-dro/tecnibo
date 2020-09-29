@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: List Projects Template
+ * Template Name: Single Project Template
  *
  */
 
@@ -72,8 +72,7 @@ get_header(); ?>
                                <?php } ?>
                             <?php
                             // Related Products
-                            
-                            if ( Tecnibo_Portfolio::has_meta( '_related_products' , get_the_ID() , false ) ){ ?>
+                            if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>
                             <section class="tecnibo-row">
                                <?php echo Tecnibo_Portfolio::get_related_products_projects ( '_related_products' , get_the_ID() , 'tecnibo_product' ); ?>
                             </section>

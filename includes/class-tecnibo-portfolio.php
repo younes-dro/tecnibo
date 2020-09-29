@@ -229,6 +229,40 @@ class Tecnibo_Portfolio {
         
         return false;
     }
+    public static function has_related_objects( $post_id ){
+        
+        $posttype = get_post_type( $post_id );
+        $posttype_to_search = ( $posttype == 'tecnibo_product') ? 'tecbnibo_project' : 'tecnibo_product'; 
+        $related_inside = ( $posttype === 'tecnibo_product') ? '_related_projects' : '_related_products';
+        $related_outside = ( $posttype === 'tecnibo_product') ? '_related_products' : '_related_projects';
+        
+        //Inside Objects
+        $inside_objects = self::has_meta( $related_inside , $post_id, false);
+        
+        //Outside Objects
+        $all_ids = get_posts( array (
+            'post_type' => $posttype_to_search,
+            'numberposts' => -1,
+            'status' => 'publish',
+            'fields' => 'ids'
+        ) );
+
+        $outside_objects = false;
+        foreach ($all_ids as $id) {
+            $q = get_post_meta( $id, $related_outside );
+            if ( !empty ( $q ) && in_array( $post_id, $q[0] ) ){
+                $outside_objects = true;
+            }
+        }
+        
+        if( $inside_objects || $outside_objects ){
+            
+            return true;
+        }else{
+            
+            return false;
+        }
+    }
 
     public static function get_product_meta ( $meta_title , $meta , $post_id , $video = false ){
         $project_meta = get_post_meta( $post_id , $meta ,true);
@@ -260,13 +294,17 @@ class Tecnibo_Portfolio {
     }
     public static function get_related_products_projects ( $meta , $post_id  , $post_type  ){
         
-        $posts = get_post_meta( $post_id , $meta );
-//        var_dump($posts);
-        $related = ( $post_type == 'tecnibo_product') ? __( 'Related Products','tecnibo' ) : __( 'Related Projects' , 'tecnibo' );
+        $outside_objects = self::get_outside_objects( $post_id , $post_type);
+        $inside_objects = get_post_meta( $post_id , $meta );
+        
+        $objects = array_merge( ( array ) $outside_objects , ( array ) $inside_objects[0] );
+        
         $search_results = new WP_Query( array (
             'post_type' => $post_type,
-            'post__in' => $posts[0]
+            'post__in' => $objects
         ) );
+        $related = ( $post_type == 'tecnibo_product') ? __( 'Related Products','tecnibo' ) : __( 'Related Projects' , 'tecnibo' );
+        $html ='';
         $html .= '<h2 class="related_products_projects"><span>' . $related . '</span></h2>';
         $html .= '<div class="items">';
        
@@ -294,7 +332,32 @@ class Tecnibo_Portfolio {
         
         return $html;
     }
-    
+
+    public static function get_outside_objects( $post_id){
+        $posttype = get_post_type( $post_id );
+        $posttype_to_search = ( $posttype == 'tecnibo_product') ? 'tecnibo_project' : 'tecnibo_product'; 
+        $related_outside = ( $posttype === 'tecnibo_product') ? '_related_products' : '_related_projects'; 
+        
+        //Outside Objects
+        $all_ids = get_posts( array (
+            'post_type' => $posttype_to_search,
+            'numberposts' => -1,
+            'status' => 'publish',
+            'fields' => 'ids'
+        ) );
+
+        $objects_ids = [];
+        foreach ($all_ids as $id) {
+            $q = get_post_meta( $id, $related_outside );
+            if ( !empty ( $q ) && in_array( $post_id, $q[0] ) ){
+                $objects_ids [] = $id;
+            }
+        } 
+         return $objects_ids;
+        
+    }
+
+
     public static function get_grid_products_projects( $args ){
         
         $html   = '<div class="items">';
