@@ -70,6 +70,7 @@ get_header(); ?>
                             </section> 
                             
                                <?php } ?>
+                            <?php do_action( 'ocean_social_share' ); ?>
                             <?php
                             // Related Products
                             if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>
@@ -81,7 +82,7 @@ get_header(); ?>
                             <?php do_action( 'ocean_before_content_inner' ); ?>
 
                             <?php do_action( 'ocean_after_content_inner' ); ?>
-
+                           
 			</div><!-- #content -->
 
 			<?php do_action( 'ocean_after_content' ); ?>
