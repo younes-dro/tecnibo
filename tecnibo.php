@@ -240,6 +240,7 @@ class Tecnibo{
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
+        add_action ( 'post_edit_form_tag', array( 'Tecnibo_Portfolio' , 'update_edit_form' ) );
                 
         /******** Scripts */
         add_action( 'admin_enqueue_scripts', array ( $this , 'enqueue_select2_scripts' ) );

@@ -81,8 +81,16 @@ class Tecnibo_Portfolio {
 	endif;        
 
 	$html .= '</select></p>';
+        //PDF
+        $html .= '<p class="description">';
+        $html .= __( 'Technical brochure: (The file must be a PDF format <b>.pdf</b>)','tecnibo' ) ;
+        $html .= '</p>';
+        $html .= '<input type="file" id="pdf_file" name="pdf_file" value="" size="25">';        
  
 	echo $html;        
+    }
+    public static function update_edit_form (){
+        echo ' enctype="multipart/form-data"';
     }
 
     public static function save_product_metabox ( $post_id ){
@@ -106,7 +114,24 @@ class Tecnibo_Portfolio {
         }  else {
             delete_post_meta ( $post_id, '_related_projects' );
         }
-             
+        if( ! empty( $_FILES['pdf_file']['name'] ) ) {
+            $supported_types = array( 'application/pdf' );
+            $arr_file_type = wp_check_filetype( basename( $_FILES['pdf_file']['name'] ) );
+            $uploaded_type = $arr_file_type['type'];
+
+            if( in_array( $uploaded_type, $supported_types ) ) {
+                $upload = wp_upload_bits( $_FILES['pdf_file']['name'], null, file_get_contents( $_FILES['pdf_file']['tmp_name'] ) );
+                if( isset( $upload['error'] ) && $upload['error'] != 0 ) {
+                    wp_die( __( 'There was an error uploading your file. The error is: ','tecnibo' ) . $upload['error'] );
+                } else {
+                    update_post_meta( $post_id, '_pdf_file', $upload );
+                }
+            }
+            else {
+                wp_die( __( 'The file type that you\'ve uploaded is not a PDF.' , 'tecnibo' ) );
+            }
+        }        
+
     }
     public function project_metabox( $post_object ){
         
