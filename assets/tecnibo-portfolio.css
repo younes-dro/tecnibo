@@ -4,12 +4,14 @@
 
 body.single-tecnibo_product #site-header.transparent-header, 
 body.single-tecnibo_project #site-header.transparent-header,
-body.page-template-projects-page #site-header.transparent-header{
+body.page-template-projects-page #site-header.transparent-header,
+body.tax-product_category #site-header.transparent-header{
     height: 80px;
 }
 body.single-tecnibo_product.has-transparent-header .page-header, 
 body.single-tecnibo_project.has-transparent-header .page-header,
-body.page-template-projects-page.has-transparent-header .page-header{
+body.page-template-projects-page.has-transparent-header .page-header,
+body.tax-product_category.has-transparent-header .page-header{
 
     height: 50px;
     padding: 10px;
@@ -19,8 +21,9 @@ body.page-template-projects-page.has-transparent-header .page-header{
     margin-bottom: 10px;    
 }
 body.single-tecnibo_project .site-breadcrumbs a,body.single-tecnibo_project .background-image-page-header .site-breadcrumbs a,
-body.single-tecnibo_product .site-breadcrumbs a,  body.single-tecnibo_product .background-image-page-header .site-breadcrumbs a
-body.page-template-projects-page .site-breadcrumbs a, body.page-template-projects-page .background-image-page-header .site-breadcrumbs a{
+body.single-tecnibo_product .site-breadcrumbs a,  body.single-tecnibo_product .background-image-page-header .site-breadcrumbs a,
+body.page-template .site-breadcrumbs a, body.page-template .background-image-page-header .site-breadcrumbs a,
+body.tax-product_category .site-breadcrumbs a,  body.tax-product_category .background-image-page-header .site-breadcrumbs a{
     color: #867e79;
 }
 body.single-tecnibo_product #content-wrap, 
@@ -33,9 +36,16 @@ body.single-tecnibo_product h1, body.single-tecnibo_product h2, body.single-tecn
 body.single-tecnibo_project h1, body.single-tecnibo_project h2, body.single-tecnibo_project h3, body.single-tecnibo_project h4,
 body.single-tecnibo_project h5, body.single-tecnibo_project h6,
 body.page-template-projects-page h1, body.page-template-projects-page h2, body.page-template-projects-page h3, body.page-template-projects-page h4,
-body.page-template-projects-page h5, body.page-template-projects-page h6{
+body.page-template-projects-page h5, body.page-template-projects-page h6,
+body.tax-product_category h1, body.tax-product_category h2, body.tax-product_category h3, body.tax-product_category h4,
+body.tax-product_category h5, body.tax-product_category h6{
     font-family: 'Oswald', sans-serif;
     color: #867e79;
+}
+
+div#content section.tecnibo-row{
+    width: 100%;
+    margin: 50px auto;
 }
 body.single-tecnibo_product p,body.single-tecnibo_project p{
     font-family: 'Merriweather', serif;
@@ -242,11 +252,7 @@ h2.project-title{
     font-weight: 300;
     color: #867e79;    
 }
-div.project-overview-container{
-    /*background-color: aliceblue;*/
-    width: 100%;
-    margin: 30px auto;  
-}
+
 div.project-overview{
     width: 100%;
     margin: 0;
@@ -284,6 +290,7 @@ div.related-products{
 }
 /************************* Related Products / Projects ***/
 h2.related_products_projects{
+    position: relative;
     font-size: 2rem;
     font-weight: 500;
     line-height: 1.15;
@@ -291,6 +298,22 @@ h2.related_products_projects{
     text-transform: uppercase;
     
 }
+h2.related_products_projects span{
+    padding-right: 18px;
+    background-color: #fff;    
+}
+
+h2.related_products_projects:after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.5em;
+    border-top: 1px solid #867e79;
+    z-index: -1;
+}
+
 @media screen and (min-width: 850px){
     h2.related_products_projects{
         font-size:3rem;
@@ -308,5 +331,46 @@ h2.related_products_projects{
     height: 50px;
     background: rgba(0, 0, 0, 0.4);
     z-index: 2;
+}
+/********************************************/
+
+/************************* Archive page  ***/
+
+header.custom_tax_header{
+    min-height: 350px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    margin-bottom: 30px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    filter: grayscale(100%); 
+}
+header.custom_tax_header h1.custom-tax-title{
+    min-width: 25rem;
+    border-width: 0.875rem;
+    padding: 3.75rem;
+    border-color: hsla(0,0%,100%,.8);
+   
+    border-style: solid;
+    color: #fff;
+    font-size: 50px;
+    padding: 50px;
+}
+section.archive-description{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+section.archive-description p{
+font-family: Merriweather,serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #867e79;
+    line-height: 1.85;
+    text-align: center;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px 0;    
 }
 /********************************************/
