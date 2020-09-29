@@ -82,11 +82,13 @@ class Tecnibo_Portfolio {
 
 	$html .= '</select></p>';
         //PDF
+        $pdf_file = get_post_meta( $post_object->ID , '_pdf_file', true );
+        $pdf_url = ( !empty ($pdf_file) ) ? '<a target="_blank" href="' . $pdf_file['url'] .'"><span class="dashicons dashicons-pdf"></span></a>' : '';
         $html .= '<p class="description">';
         $html .= __( 'Technical brochure: (The file must be a PDF format <b>.pdf</b>)','tecnibo' ) ;
         $html .= '</p>';
-        $html .= '<input type="file" id="pdf_file" name="pdf_file" value="" size="25">';        
- 
+        $html .= '<input type="file" id="pdf_file" name="pdf_file" value="" size="25">';
+        $html .= '<br><br>'.$pdf_url;
 	echo $html;        
     }
     public static function update_edit_form (){
