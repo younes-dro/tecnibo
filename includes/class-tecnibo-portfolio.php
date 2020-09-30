@@ -336,7 +336,7 @@ class Tecnibo_Portfolio {
         $html .= '<div class="items">';
        
 		while( $search_results->have_posts() ) : $search_results->the_post();	
-			$post_thumbnail_url = get_the_post_thumbnail_url( $search_results->post->ID, 'full' ); 
+			$post_thumbnail_url = get_the_post_thumbnail_url( $search_results->post->ID, 'see-details' ); 
                         
 			$html .= '<a  href="'.get_the_permalink().'" 
                                 class="" 

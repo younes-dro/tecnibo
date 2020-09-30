@@ -19,7 +19,7 @@ get_header(); ?>
 			<div id="content" class="site-content clr">
                             <h2 class="project-title"><?php the_title();?></h2>
                             <section class="tecnibo-row">
-                            <?php the_post_thumbnail('full') ?>
+                            <?php the_post_thumbnail('single-main-thumb') ?>
                             </section>
                             <section class="tecnibo-row">
                                 <div class="project-overview">
