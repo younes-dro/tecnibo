@@ -6,11 +6,11 @@
 
     function getSliderSettings(indexSide) {
         return {
-            dots: true,
+            dots: false,
             infinite: true,
             speed: 300,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             responsive: [
                 {
                     breakpoint: 1024,
@@ -40,7 +40,20 @@
         };
     }
     $(document).ready(function () {
-        $('.project-photos').slick(getSliderSettings(1));
+        $('.project-photos , .product-photos').slick(getSliderSettings(1));
+        
+        /* Display the full featured image carousel  */
+        $('.element-carousel-product').on('click', function ( event ){
+            event.preventDefault();
+            $fullImageUrl = $(this).data('full') ;
+            $('.gallery-image').fadeOut(function(){
+                $('.item-image').css('backgroundImage', 'url(' + $fullImageUrl + ')');
+            }).fadeIn();
+
+//            $activeImg = $("<img/>", {"src" : $fullImageUrl});
+//            $img = $('.product-main-image').html($activeImg);
+            
+        });
     });
 
 })(jQuery);

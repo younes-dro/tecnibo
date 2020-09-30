@@ -35,6 +35,7 @@ class Tecnibo_Labels {
             'query_var' => true,
             'rewrite' => array ( 'slug' => 'tecnibo-product'),
             'capability_type' => 'post',
+            'show_in_rest' => true,
             'hierarchical' => false,
             'menu_position' => 5,
             'menu_icon' => dirname(plugin_dir_url(__FILE__)) . '/assets/images/tecnibo-logo.png',
@@ -75,6 +76,7 @@ class Tecnibo_Labels {
             'labels' => $product_category,
             'public' => true,
             'hierarchical' => true,
+            'show_in_rest' => true,
             'rewrite' => array(
                     'slug' => 'tecnibo-product-category',
                     'with_front' => true

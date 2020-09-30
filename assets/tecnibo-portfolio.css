@@ -321,17 +321,6 @@ h2.related_products_projects:after {
 }
 /* End  Related Products / Projects ***********************/
 
-/******************* Slick custom desig  ******/
-.slick-initialized .slick-slide{
-    padding: 10px;
-}
-.slick-prev,  .slick-next {
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-}
 /********************************************/
 
 /************************* Archive page  ***/
@@ -374,3 +363,60 @@ font-family: Merriweather,serif;
     padding: 20px 0;    
 }
 /********************************************/
+
+/*
+*
+*   Custom slick css 
+*/
+.slick-dotted.slick-slider{
+    margin-bottom: 100px;
+}
+.slick-dots{
+    bottom: -80px;
+}
+ .slick-prev,
+.slick-next{
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #f9f6f6; 
+    z-index: 2;
+    font-size: 0px;
+    line-height: 50;
+    border-radius: 6px;
+}
+
+.slick-prev{
+    left: 0px;
+}
+ .slick-next{
+    right: 0px;
+}
+.slick-dots li button{
+    background-color: #000;
+    border: 1px solid #fff;
+}
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: #fff;
+}
+ .slick-dots li button:before{
+    color: #fff;
+}
+.slick-initialized .slick-slide {
+    display: block;
+    /*border: 1px solid #f00;*/
+    max-height: 160px;
+    margin-top: 20px;
+}
+.slick-slide img {
+    margin: 0 auto;
+    max-width: 120px;
+}
+@media screen and (min-width:992px){
+
+    .slick-dots{
+        bottom: -50px;
+    }
+}

@@ -413,7 +413,30 @@ class Tecnibo_Portfolio {
         
         return $html;
     }
+    
+    public static function get_carousel_product_images( $product_id ) {
+        
+        $html= '';
+    
+        $featured_images = Tecnibo_Portfolio::get_featured_images( $product_id );
+        if( count( $featured_images) > 0 ){ 
+            $html .='<section class="product-photos">';
+            foreach ($featured_images as $key => $value) { 
+                $html .='<div><a class="element-carousel-product" href="#" title="" data-full="'.$value['full'].'"><img src="' . $value['thumb'] . '" /></a></div>';
+                
+            }
+            $html .= '</section>';
+        }
+        
+        return $html;
+    }
+    public static function get_pdf_link ( $product_id ){
+        
+        $pdf_file = get_post_meta( $product_id, '_pdf_file', true );
+        $pdf_url = ( !empty ($pdf_file) ) ? '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'">'.__( 'Technical data of this product','tecnibo' ) .'<i class="far fa-file-pdf"></i></a>' : '';
+        
+        return $pdf_url;
+    }
 }
 
 
-                            

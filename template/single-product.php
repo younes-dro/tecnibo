@@ -1,11 +1,7 @@
 <?php
 /**
- * The template for displaying all pages, single posts and attachments
+ * Template Name: Single Product Template
  *
- * This is a new template file that WordPress introduced in
- * version 4.3.
- *
- * @package OceanWP WordPress theme
  */
 
 get_header(); ?>
@@ -14,53 +10,53 @@ get_header(); ?>
 
 	<div id="content-wrap" class="container clr">
 
-		<?php //do_action( 'ocean_before_primary' ); ?>
+		<?php do_action( 'ocean_before_primary' ); ?>
 
-            <div id="primary" class="content-area clr" style="background-color: #f00">
+            <div id="primary" class="content-area clr">
 
-			<?php //do_action( 'ocean_before_content' ); ?>
+			<?php do_action( 'ocean_before_content' ); ?>
 
 			<div id="content" class="site-content clr">
 
-				<?php //do_action( 'ocean_before_content_inner' ); ?>
+				<?php do_action( 'ocean_before_content_inner' ); ?>
+                            
+                            <section class="product-container">
+                                
+                                <div class="product-catalog">
+                                    <div class="product-main-image">
+                                        <div class="gallery-image">
+                                            <?php
+                                            $u = get_the_post_thumbnail_url( get_the_ID() , 'full' );
+                                            
+                                            ?>
+                                            <div class="item-image" style="background-image: url(<?php echo $u ?>)"></div>
+                                        </div>
+                                    </div>
+                                     <?php echo Tecnibo_Portfolio::get_carousel_product_images ( get_the_ID() ) ?>                
+                                </div><!-- .product-catalog -->
+                                
+                                <div class="product-detail">
+                                    <?php the_content();?>
+                                    <div class="divider"><hr class="flush"></div>
+                                    <?php 
+                                    if ( Tecnibo_Portfolio::has_meta( '_pdf_file' , get_the_ID() ) )
+                                            echo Tecnibo_Portfolio::get_pdf_link ( get_the_ID() ) ;
+                                    ?>
+                                </div><!-- .product-detail -->
+                                
+                            </section><!--- .product-container -->
+                            <?php do_action( 'ocean_social_share' ); ?>
+                            <?php
+                            //Related Projects 
+                            if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>
+                            <section class="tecnibo-row">
+                               <?php echo Tecnibo_Portfolio::get_related_products_projects ( '_related_projects' , get_the_ID() , 'tecnibo_project' ); ?>
+                            </section>
+                            <div class="divider"><hr class="flush"></div>
+                           <?php } ?>
+                            <?php do_action( 'ocean_before_content_inner' ); ?>
 
-				<?php
-				// Elementor `single` location.
-				if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'single' ) ) {
-
-					// Start loop.
-					while ( have_posts() ) :
-						the_post();
-
-						if ( is_singular( 'download' ) ) {
-
-							// EDD Page.
-							get_template_part( 'partials/edd/single' );
-
-						} elseif ( is_singular( 'page' ) ) {
-
-							// Single post.
-							get_template_part( 'partials/page/layout' );
-
-						} elseif ( is_singular( 'oceanwp_library' ) || is_singular( 'elementor_library' ) ) {
-
-							// Library post types.
-							get_template_part( 'partials/library/layout' );
-
-						} else {
-
-							// All other post types.
-							get_template_part( 'partials/single/layout', get_post_type() );
-
-						}
-
-					endwhile;
-
-				}
-				?>
-
-				<?php do_action( 'ocean_after_content_inner' ); ?>
-
+                            <?php do_action( 'ocean_after_content_inner' ); ?>
 			</div><!-- #content -->
 
 			<?php do_action( 'ocean_after_content' ); ?>
@@ -73,4 +69,4 @@ get_header(); ?>
 
 	<?php do_action( 'ocean_after_content_wrap' ); ?>
 
-<?php get_footer(); ?>
+<?php get_footer();
