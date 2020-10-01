@@ -1,0 +1,170 @@
+
+#content .items{
+    margin: 0 -5px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    @media screen and (max-width: 500px){
+        margin-right: -5px;
+    }
+    @media screen and (max-width: 1024px){
+        margin-right: -5px;
+    }
+    @media screen and (max-width: 1400px){
+        margin-right: -6px;
+    }
+    a{
+        display: block;
+        float: left;
+        width: 25%;
+        overflow: hidden;
+        position: relative;
+        background: #FFFFFF;
+        @media screen and (max-width: 500px){
+            width: 100%;
+        }
+        @media screen and (max-width: 1024px){
+            width: 50%;
+        }
+        @media screen and (max-width: 1400px){
+            width: 33.33%;
+        }
+        img {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 200ms ease-out;
+            -moz-transition: all 200ms ease-out;
+            -ms-transition: all 200ms ease-out;
+            -o-transition: all 200ms ease-out;
+            transition: all 200ms ease-out;
+        }
+        &:hover{
+            .hover {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                .middle{
+                    .title,.see{
+                        -webkit-transform: translate(0, 0px);
+                        -moz-transform: translate(0, 0px);
+                        -ms-transform: translate(0, 0px);
+                        -o-transform: translate(0, 0px);
+                        transform: translate(0, 0px);
+                        opacity: 1;
+                        filter: alpha(opacity=100);
+                    } 
+                }
+
+                .bg {
+                    left: 0;
+                    right: 0;
+                    opacity: 1;
+                    filter: alpha(opacity=100);
+                }
+            }
+            img {
+                opacity: 0.7;
+                filter: alpha(opacity=70);
+            }
+        }
+        .hover {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            right: 28px;
+            bottom: 24px;
+            text-align: center;
+            .bg {
+                background: #ffffff;
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 50%;
+                right: 50%;
+                -webkit-transform: translate3d(0, 0, 0);
+                -moz-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                -o-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                opacity: 0;
+                filter: alpha(opacity=0);
+                -webkit-transition: all 200ms ease-out;
+                -moz-transition: all 200ms ease-out;
+                -ms-transition: all 200ms ease-out;
+                -o-transition: all 200ms ease-out;
+                transition: all 200ms ease-out;
+
+            }
+            .middle {
+                position: relative;
+                display: inline-block;
+                width: 90%;
+                text-align: center;
+                line-height: normal;
+                vertical-align: middle;
+                .title {
+                    color: #272727;
+                    text-transform: uppercase;
+                    font-family: "Avenir LT W01_85 Heavy", sans-serif;
+                    line-height: 32px;
+                    font-weight: 900;
+                    font-size: 30px;
+                    padding: 0 20px;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    -moz-transform: translate3d(0, 0, 0);
+                    -ms-transform: translate3d(0, 0, 0);
+                    -o-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                    opacity: 0;
+                    filter: alpha(opacity=0);
+                    -webkit-transform: translate(0, 50px);
+                    -moz-transform: translate(0, 50px);
+                    -ms-transform: translate(0, 50px);
+                    -o-transform: translate(0, 50px);
+                    transform: translate(0, 50px); /* -webkit-transition: all 200ms ease-out; */
+                    -moz-transition: all 200ms ease-out;
+                    -ms-transition: all 200ms ease-out;
+                    -o-transition: all 200ms ease-out; /* transition: all 200ms ease-out; */
+                    transition: all 200ms ease-out;
+                    @media screen and (max-width: 850px){
+                        line-height: 25px;
+                        font-size: 20px;
+                    }
+                }
+                .see {
+                    color: #616161;
+                    font-family: "adobe-garamond-pro", serif;
+                    font-size: 17px;
+                    display: inline-block;
+                    padding-top: 15px;
+                    padding-bottom: 7px;
+                    border-bottom: 1px solid #616161;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    -moz-transform: translate3d(0, 0, 0);
+                    -ms-transform: translate3d(0, 0, 0);
+                    -o-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                    opacity: 0;
+                    filter: alpha(opacity=0);
+                    -webkit-transform: translate(0, 100px);
+                    -moz-transform: translate(0, 100px);
+                    -ms-transform: translate(0, 100px);
+                    -o-transform: translate(0, 100px);
+                    transform: translate(0, 100px);
+                    -webkit-transition: all 200ms ease-out;
+                    -moz-transition: all 200ms ease-out;
+                    -ms-transition: all 200ms ease-out;
+                    -o-transition: all 200ms ease-out;
+                    transition: all 200ms ease-out;
+                }
+            }
+        }
+        span{
+            display: block;
+        }
+    }    
+}

@@ -1,0 +1,68 @@
+body.single-tecnibo_project{
+    h2.project-title{
+        font-size: 2.5em;
+        line-height: 1.5;
+        font-weight: 300;
+        color: #867e79;
+        @media (min-width: 992px){
+            font-size: 3.5em;
+        }
+    }
+    div.project-overview{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        @media screen and (min-width: 850px){
+            width: 50%;
+            float: left;
+            /*background-color: aqua;*/ 
+            /*padding: 20px 0;*/
+        }            
+
+        h3{
+            font-weight: 300;
+            color: #867e79;
+            line-height: 1.215;
+            font-size: 2.5em;
+        }
+        p{
+            padding: 0 40px 0 0;
+            strong{
+                font-weight: 700;
+                font-size: 1.5em;
+            }
+        }
+    }
+    div.project-meta{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        @media screen and (min-width: 850px){
+            width: 50%;
+            float: left;
+            /* background-color: aqua; */
+            padding: 20px 0;
+        }
+        p{
+            background-color: #f9f9f9;
+            margin: 0 0 5px;
+
+            strong{
+                background-color: #f9f9f9;
+                border-left: 4px solid $color__logo_red;
+            }
+            strong , em {
+
+                display: inline-block;
+                padding: 0 10px;
+                height: 60px;
+                line-height: 60px;
+            }
+        }
+    }
+    section.tecnibo-row{
+        > h4{
+            font-size: 2.5em;
+        }
+    }
+}

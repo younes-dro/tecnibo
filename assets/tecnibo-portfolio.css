@@ -1,385 +1,486 @@
-/* 
+/*! 
+
+Younes DRO https://github.com/younes-dro
 
 */
-
-
-body.single-tecnibo_product #content-wrap, 
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Colors
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Template 
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## General Style
+--------------------------------------------------------------*/
+body.single-tecnibo_product #content-wrap,
 body.single-tecnibo_project #content-wrap,
-body.page-template-projects-page #content-wrap{
-    padding-top: 10px;
+body.page-template-projects-page #content-wrap {
+  padding-top: 10px;
+}
+body.single-tecnibo_product div#content section.tecnibo-row,
+body.single-tecnibo_project div#content section.tecnibo-row,
+body.page-template-projects-page div#content section.tecnibo-row {
+  width: 100%;
+  margin: 50px auto;
+}
+body.single-tecnibo_product div.divider,
+body.single-tecnibo_project div.divider,
+body.page-template-projects-page div.divider {
+  width: 42%;
+  max-width: 81.25em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+body.single-tecnibo_product div.divider hr.flush,
+body.single-tecnibo_project div.divider hr.flush,
+body.page-template-projects-page div.divider hr.flush {
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 0.0625rem solid #d3d3d3;
+}
+body.single-tecnibo_product h2.related_products_projects,
+body.single-tecnibo_project h2.related_products_projects,
+body.page-template-projects-page h2.related_products_projects {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 850px) {
+  body.single-tecnibo_product h2.related_products_projects,
+body.single-tecnibo_project h2.related_products_projects,
+body.page-template-projects-page h2.related_products_projects {
+    font-size: 3rem;
+  }
+}
+body.single-tecnibo_product h2.related_products_projects span,
+body.single-tecnibo_project h2.related_products_projects span,
+body.page-template-projects-page h2.related_products_projects span {
+  padding-right: 18px;
+  background-color: #fff;
+}
+body.single-tecnibo_product h2.related_products_projects:after,
+body.single-tecnibo_project h2.related_products_projects:after,
+body.page-template-projects-page h2.related_products_projects:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #867e79;
+  z-index: -1;
 }
 
-
-div#content section.tecnibo-row{
-    width: 100%;
-    margin: 50px auto;
+/*--------------------------------------------------------------
+## Category Product
+--------------------------------------------------------------*/
+header.custom_tax_header {
+  min-height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(100%);
 }
 
-div.divider{
-    width:  42%;
-    max-width: 81.25em;
-    margin-left: auto;
-    margin-right: auto  ;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-div.divider hr.flush{
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    border: none;
-    border-top: .0625rem solid #d3d3d3;
-    ;    
+header.custom_tax_header h1.custom-tax-title {
+  min-width: 25rem;
+  border-width: 0.875rem;
+  padding: 3.75rem;
+  border-color: rgba(255, 255, 255, 0.8);
+  border-style: solid;
+  color: #fff;
+  font-size: 50px;
+  padding: 50px;
 }
 
-/************************* projects page template ******/
-#content .items{
-    margin: 0 -5px;
-    padding-bottom: 5px;
-    background-color: #fff;
-    position: relative;
-    overflow: hidden
+section.archive-description {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
-#content .items  a{
-    display: block;
+
+section.archive-description p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #867e79;
+  line-height: 1.85;
+  text-align: center;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/*--------------------------------------------------------------
+## Projects Page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Single Product
+--------------------------------------------------------------*/
+body.single-tecnibo_product section.product-container {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+body.single-tecnibo_product div.product-catalog,
+body.single-tecnibo_product div.product-detail {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 24px;
+}
+@media (min-width: 992px) {
+  body.single-tecnibo_product div.product-catalog,
+body.single-tecnibo_product div.product-detail {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+body.single-tecnibo_product div.product-catalog .product-main-image {
+  height: 320px;
+  position: relative;
+}
+body.single-tecnibo_product div.product-catalog .product-main-image .gallery-image {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body.single-tecnibo_product div.product-catalog .product-main-image .gallery-image .item-image {
+  /*background-color: aqua;*/
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body.single-tecnibo_product div.product-catalog .product-photos {
+  max-height: 145px;
+}
+body.single-tecnibo_product div.product-detail > h4:first-child {
+  font-size: 2.5em;
+}
+body.single-tecnibo_product div.product-detail a.fiche-technique {
+  display: block;
+}
+body.single-tecnibo_product div.product-detail a.fiche-technique i {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/*--------------------------------------------------------------
+## Single Project
+--------------------------------------------------------------*/
+body.single-tecnibo_project h2.project-title {
+  font-size: 2.5em;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #867e79;
+}
+@media (min-width: 992px) {
+  body.single-tecnibo_project h2.project-title {
+    font-size: 3.5em;
+  }
+}
+body.single-tecnibo_project div.project-overview {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 850px) {
+  body.single-tecnibo_project div.project-overview {
+    width: 50%;
     float: left;
-    width: 25%;
-    overflow: hidden;
-    position: relative;
-    background: #FFFFFF;
+    /*background-color: aqua;*/
+    /*padding: 20px 0;*/
+  }
 }
-.items a img {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 200ms ease-out;
-    -moz-transition: all 200ms ease-out;
-    -ms-transition: all 200ms ease-out;
-    -o-transition: all 200ms ease-out;
-    transition: all 200ms ease-out;
+body.single-tecnibo_project div.project-overview h3 {
+  font-weight: 300;
+  color: #867e79;
+  line-height: 1.215;
+  font-size: 2.5em;
 }
-.items a .hover {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    right: 28px;
-    bottom: 24px;
-    text-align: center;
+body.single-tecnibo_project div.project-overview p {
+  padding: 0 40px 0 0;
 }
-.items a span{
-    display: block;
+body.single-tecnibo_project div.project-overview p strong {
+  font-weight: 700;
+  font-size: 1.5em;
 }
-#content .items a .hover .bg {
-    background: #ffffff;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 50%;
-    right: 50%;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: all 200ms ease-out;
-    -moz-transition: all 200ms ease-out;
-    -ms-transition: all 200ms ease-out;
-    -o-transition: all 200ms ease-out;
-    transition: all 200ms ease-out;
+body.single-tecnibo_project div.project-meta {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 850px) {
+  body.single-tecnibo_project div.project-meta {
+    width: 50%;
+    float: left;
+    /* background-color: aqua; */
+    padding: 20px 0;
+  }
+}
+body.single-tecnibo_project div.project-meta p {
+  background-color: #f9f9f9;
+  margin: 0 0 5px;
+}
+body.single-tecnibo_project div.project-meta p strong {
+  background-color: #f9f9f9;
+  border-left: 4px solid #e80100;
+}
+body.single-tecnibo_project div.project-meta p strong, body.single-tecnibo_project div.project-meta p em {
+  display: inline-block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+}
+body.single-tecnibo_project section.tecnibo-row > h4 {
+  font-size: 2.5em;
+}
 
+/*--------------------------------------------------------------
+# Slick
+--------------------------------------------------------------*/
+.slick-dotted.slick-slider {
+  margin-bottom: 100px;
 }
-#content .items a .hover .middle {
-    position: relative;
-    display: inline-block;
-    width: 90%;
-    text-align: center;
-    line-height: normal;
-    vertical-align: middle;
+
+.slick-prev,
+.slick-next {
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #f9f6f6;
+  z-index: 2;
+  font-size: 0px;
+  line-height: 50;
+  border-radius: 6px;
 }
-#content .items a .hover .middle .title {
-    color: #272727;
-    text-transform: uppercase;
-    font-family: "Avenir LT W01_85 Heavy", sans-serif;
-    line-height: 32px;
-    font-weight: 900;
-    font-size: 30px;
-    padding: 0 20px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transform: translate(0, 50px);
-    -moz-transform: translate(0, 50px);
-    -ms-transform: translate(0, 50px);
-    -o-transform: translate(0, 50px);
-    transform: translate(0, 50px); /* -webkit-transition: all 200ms ease-out; */
-    -moz-transition: all 200ms ease-out;
-    -ms-transition: all 200ms ease-out;
-    -o-transition: all 200ms ease-out; /* transition: all 200ms ease-out; */
-    transition: all 200ms ease-out;
+
+.slick-prev {
+  left: 0px;
 }
-#content .items a .hover .middle .see {
-    color: #616161;
-    font-family: "adobe-garamond-pro", serif;
-    font-size: 17px;
-    display: inline-block;
-    padding-top: 15px;
-    padding-bottom: 7px;
-    border-bottom: 1px solid #616161;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transform: translate(0, 100px);
-    -moz-transform: translate(0, 100px);
-    -ms-transform: translate(0, 100px);
-    -o-transform: translate(0, 100px);
-    transform: translate(0, 100px);
-    -webkit-transition: all 200ms ease-out;
-    -moz-transition: all 200ms ease-out;
-    -ms-transition: all 200ms ease-out;
-    -o-transition: all 200ms ease-out;
-    transition: all 200ms ease-out;
+
+.slick-next {
+  right: 0px;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+  /*border: 1px solid #f00;*/
+  max-height: 160px;
+  margin-top: 20px;
+}
+.slick-initialized .slick-slide img {
+  margin: 0 auto;
+  max-width: 120px;
+}
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Grid ( see details )
+--------------------------------------------------------------*/
+#content .items {
+  margin: 0 -5px;
+  padding-bottom: 5px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (max-width: 500px) {
+  #content .items {
+    margin-right: -5px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #content .items {
+    margin-right: -5px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  #content .items {
+    margin-right: -6px;
+  }
+}
+#content .items a {
+  display: block;
+  float: left;
+  width: 25%;
+  overflow: hidden;
+  position: relative;
+  background: #FFFFFF;
+}
+@media screen and (max-width: 500px) {
+  #content .items a {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #content .items a {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 1400px) {
+  #content .items a {
+    width: 33.33%;
+  }
+}
+#content .items a img {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -ms-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
 }
 #content .items a:hover .hover {
-    opacity: 1;
-    filter: alpha(opacity=100);
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
-#content .items a:hover img {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-}
-#content .items a:hover .hover .title,
-#content .items a:hover .hover .see {
-    -webkit-transform: translate(0, 0px);
-    -moz-transform: translate(0, 0px);
-    -ms-transform: translate(0, 0px);
-    -o-transform: translate(0, 0px);
-    transform: translate(0, 0px);
-    opacity: 1;
-    filter: alpha(opacity=100);
+#content .items a:hover .hover .middle .title, #content .items a:hover .hover .middle .see {
+  -webkit-transform: translate(0, 0px);
+  -moz-transform: translate(0, 0px);
+  -ms-transform: translate(0, 0px);
+  -o-transform: translate(0, 0px);
+  transform: translate(0, 0px);
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 #content .items a:hover .hover .bg {
-    left: 0;
-    right: 0;
-    opacity: 1;
-    filter: alpha(opacity=100);
+  left: 0;
+  right: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
-@media screen and (max-width: 1400px){
-    #content .items {
-        margin-right: -6px;
-    }
-    #content .items a{
-        width: 33.33%;
-    }    
+#content .items a:hover img {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
 }
-@media screen and (max-width: 1024px){
-    #content .items {
-        margin-right: -5px;
-    }
-    #content .items a{
-        width: 50%;
-    }
+#content .items a .hover {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 28px;
+  bottom: 24px;
+  text-align: center;
 }
-@media screen and (max-width: 850px){
-    #content .items a .hover .middle .title {
-        line-height: 25px;
-        font-size: 20px;
-    }
+#content .items a .hover .bg {
+  background: #ffffff;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 50%;
+  right: 50%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -ms-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
 }
-@media screen and (max-width: 500px){
-    #content .items {
-        margin-right: -5px;
-    }
-    #content .items a{
-        width: 100%;
-    }
+#content .items a .hover .middle {
+  position: relative;
+  display: inline-block;
+  width: 90%;
+  text-align: center;
+  line-height: normal;
+  vertical-align: middle;
 }
-/* End Projects Page Template ***************************/
-
-/******************* single project page template ******/
-h2.project-title{
-    font-size: 2.5em;
-    line-height: 1.5;
-    font-weight: 300;
-    color: #867e79;    
+#content .items a .hover .middle .title {
+  color: #272727;
+  text-transform: uppercase;
+  font-family: "Avenir LT W01_85 Heavy", sans-serif;
+  line-height: 32px;
+  font-weight: 900;
+  font-size: 30px;
+  padding: 0 20px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: translate(0, 50px);
+  -moz-transform: translate(0, 50px);
+  -ms-transform: translate(0, 50px);
+  -o-transform: translate(0, 50px);
+  transform: translate(0, 50px);
+  /* -webkit-transition: all 200ms ease-out; */
+  -moz-transition: all 200ms ease-out;
+  -ms-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  /* transition: all 200ms ease-out; */
+  transition: all 200ms ease-out;
 }
-
-div.project-overview{
-    width: 100%;
-    margin: 0;
-    padding: 0;    
-}
-
-div.project-overview h3{
-    font-weight: 300;
-    color: #867e79;
-    line-height: 1.215;
-    font-size: 2em;
-}
-div.project-overview p{
-    padding: 0 40px 0 0;
-}
-div.project-overview p strong{
-    font-weight: 700;
-    font-size: 1.5em;
-}
-div.preject-meta{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-div.related-products{
-
-}
-@media screen and (min-width: 850px){
-    div.project-meta, div.project-overview {
-        width: 50%;
-        float: left;
-        /* background-color: aqua; */
-        padding: 20px 0;
-    }
-}
-/************************* Related Products / Projects ***/
-h2.related_products_projects{
-    position: relative;
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: .01em;
-    text-transform: uppercase;
-    
-}
-h2.related_products_projects span{
-    padding-right: 18px;
-    background-color: #fff;    
-}
-
-h2.related_products_projects:after {
-    content:"";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 0.5em;
-    border-top: 1px solid #867e79;
-    z-index: -1;
-}
-
-@media screen and (min-width: 850px){
-    h2.related_products_projects{
-        font-size:3rem;
-    }
-}
-/* End  Related Products / Projects ***********************/
-
-/********************************************/
-
-/************************* Archive page  ***/
-
-header.custom_tax_header{
-    min-height: 350px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    margin-bottom: 30px;  
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    filter: grayscale(100%); 
-}
-header.custom_tax_header h1.custom-tax-title{
-    min-width: 25rem;
-    border-width: 0.875rem;
-    padding: 3.75rem;
-    border-color: hsla(0,0%,100%,.8);
-   
-    border-style: solid;
-    color: #fff;
-    font-size: 50px;
-    padding: 50px;
-}
-section.archive-description{
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-section.archive-description p{
-font-family: Merriweather,serif;
+@media screen and (max-width: 850px) {
+  #content .items a .hover .middle .title {
+    line-height: 25px;
     font-size: 20px;
-    font-weight: 400;
-    color: #867e79;
-    line-height: 1.85;
-    text-align: center;
-    max-width: 50%;
-    margin: 0 auto;
-    padding: 20px 0;    
+  }
 }
-/********************************************/
+#content .items a .hover .middle .see {
+  color: #616161;
+  font-family: "adobe-garamond-pro", serif;
+  font-size: 17px;
+  display: inline-block;
+  padding-top: 15px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #616161;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: translate(0, 100px);
+  -moz-transform: translate(0, 100px);
+  -ms-transform: translate(0, 100px);
+  -o-transform: translate(0, 100px);
+  transform: translate(0, 100px);
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -ms-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+#content .items a span {
+  display: block;
+}
 
-/*
-*
-*   Custom slick css 
-*/
-.slick-dotted.slick-slider{
-    margin-bottom: 100px;
-}
-.slick-dots{
-    bottom: -80px;
-}
- .slick-prev,
-.slick-next{
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid #f9f6f6; 
-    z-index: 2;
-    font-size: 0px;
-    line-height: 50;
-    border-radius: 6px;
-}
-
-.slick-prev{
-    left: 0px;
-}
- .slick-next{
-    right: 0px;
-}
-.slick-dots li button{
-    background-color: #000;
-    border: 1px solid #fff;
-}
-.slick-dots li.slick-active button:before {
-    opacity: 1;
-    color: #fff;
-}
- .slick-dots li button:before{
-    color: #fff;
-}
-.slick-initialized .slick-slide {
-    display: block;
-    /*border: 1px solid #f00;*/
-    max-height: 160px;
-    margin-top: 20px;
-}
-.slick-slide img {
-    margin: 0 auto;
-    max-width: 120px;
-}
-@media screen and (min-width:992px){
-
-    .slick-dots{
-        bottom: -50px;
-    }
-}
+/*# sourceMappingURL=tecnibo-portfolio.css.map */
