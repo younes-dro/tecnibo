@@ -4,13 +4,13 @@
 ;
 (function ($) {
 
-    function getSliderSettings(indexSide) {
+    function getSliderSettings() {
         return {
             dots: false,
             infinite: true,
             speed: 300,
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             responsive: [
                 {
                     breakpoint: 1024,
@@ -40,19 +40,25 @@
         };
     }
     $(document).ready(function () {
-        $('.project-photos , .product-photos').slick(getSliderSettings(1));
-        
-        /* Display the full featured image carousel  */
-        $('.element-carousel-product').on('click', function ( event ){
+        $('.project-photos, .product-photos').slick(getSliderSettings( ));
+        $('.project-photos').slickLightbox({
+            background : 'rgb(255 255 255)',
+            src: 'src',
+            itemSelector: '.projetc-item-image > img'
+        });
+
+
+        /* Product Display the full featured image carousel  */
+        $('.element-carousel-product').on('click', function (event) {
             event.preventDefault();
-            $fullImageUrl = $(this).data('full') ;
-            $('.gallery-image').fadeOut(function(){
+            $fullImageUrl = $(this).data('full');
+            $('.gallery-image').fadeOut(function () {
                 $('.item-image').css('backgroundImage', 'url(' + $fullImageUrl + ')');
             }).fadeIn();
 
 //            $activeImg = $("<img/>", {"src" : $fullImageUrl});
 //            $img = $('.product-main-image').html($activeImg);
-            
+
         });
     });
 

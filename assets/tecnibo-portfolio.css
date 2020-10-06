@@ -261,6 +261,33 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
 /*--------------------------------------------------------------
 # Slick
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## LightBoc
+--------------------------------------------------------------*/
+.slick-lightbox .slick-lightbox-close:before {
+  color: #000;
+  font-size: 50px;
+}
+
+.product-photos.slick-initialized .slick-slide,
+.project-photos.slick-initialized .slick-slide {
+  display: block;
+  /*border: 1px solid #f00;*/
+  max-height: 160px;
+  margin-top: 20px;
+}
+.product-photos.slick-initialized .slick-slide img,
+.project-photos.slick-initialized .slick-slide img {
+  margin: 0 auto;
+  max-width: 120px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.product-photos.slick-initialized .slick-slide img:hover,
+.project-photos.slick-initialized .slick-slide img:hover {
+  opacity: 1;
+}
+
 .slick-dotted.slick-slider {
   margin-bottom: 100px;
 }
@@ -284,17 +311,6 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
 
 .slick-next {
   right: 0px;
-}
-
-.slick-initialized .slick-slide {
-  display: block;
-  /*border: 1px solid #f00;*/
-  max-height: 160px;
-  margin-top: 20px;
-}
-.slick-initialized .slick-slide img {
-  margin: 0 auto;
-  max-width: 120px;
 }
 
 /*--------------------------------------------------------------

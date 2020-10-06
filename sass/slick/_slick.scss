@@ -1,3 +1,26 @@
+/*--------------------------------------------------------------
+## LightBoc
+--------------------------------------------------------------*/
+@import "lightbox";
+
+.product-photos.slick-initialized, 
+.project-photos.slick-initialized {
+ .slick-slide {
+    display: block;
+    /*border: 1px solid #f00;*/
+    max-height: 160px;
+    margin-top: 20px;
+    img {
+        margin: 0 auto;
+        max-width: 120px;
+        cursor: pointer;
+        opacity: .8;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}    
+}
 .slick-dotted.slick-slider{
     margin-bottom: 100px;
 }
@@ -20,15 +43,5 @@
 }
 .slick-next{
     right: 0px;
-}
-.slick-initialized .slick-slide {
-    display: block;
-    /*border: 1px solid #f00;*/
-    max-height: 160px;
-    margin-top: 20px;
-    img {
-        margin: 0 auto;
-        max-width: 120px;
-    }    
 }
 

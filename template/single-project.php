@@ -52,7 +52,7 @@ get_header(); ?>
                                 <?php 
                                 foreach ($featured_images as $key => $value) { 
                                 ?>
-                                <div><img src="<?php echo $value['full']?>" /></div>
+                                <div class="projetc-item-image"><img src="<?php echo $value['full']?>" /></div>
                                 <?php  
                                 } 
                                 ?>

@@ -295,10 +295,15 @@ class Tecnibo{
                 || is_tax()
                 ) {
             wp_enqueue_script('tecnibo-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Tecnibo()->version, true);            
+            wp_enqueue_script('tecnibo-slick-lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js', array('jquery',), Tecnibo()->version, true);            
+            
+            
             wp_enqueue_script('tecnibo-front-js', $this->plugin_url() . '/assets/tecnibo-front.js', array('jquery',), Tecnibo()->version, true);            
             
             wp_enqueue_style( 'tecnibo-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
-            wp_enqueue_style( 'tecnibo-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css'); 
+            wp_enqueue_style( 'tecnibo-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css');
+            wp_enqueue_style( 'tecnibo-slick-lightbox-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css' );
+            
             wp_enqueue_style( 'tecnibo-portfolio-css', $this->plugin_url() . '/assets/tecnibo-portfolio.css', array ('oceanwp-style') );
         }        
     }
