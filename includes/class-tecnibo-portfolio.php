@@ -290,7 +290,19 @@ class Tecnibo_Portfolio {
             return false;
         }
     }
-
+    public static function category_has_product_project ( $args ){
+        
+        $query = new WP_Query($args);
+        if ( $query->have_posts() ) {
+            wp_reset_query();
+            return true ;
+            
+        }
+        wp_reset_query();
+        return false;
+        
+        
+    }
     public static function get_product_meta ( $meta_title , $meta , $post_id , $video = false ){
         $project_meta = get_post_meta( $post_id , $meta ,true);
         if ( $video ) 
