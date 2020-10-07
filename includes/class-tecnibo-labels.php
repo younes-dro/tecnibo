@@ -33,7 +33,7 @@ class Tecnibo_Labels {
             'publicly_queryable' => true,
             'show_ui' => true,
             'query_var' => true,
-            'rewrite' => array ( 'slug' => 'tecnibo-product'),
+            'rewrite' => array ( 'slug' => 'products'),
             'capability_type' => 'post',
             'show_in_rest' => true,
             'hierarchical' => false,
@@ -78,8 +78,9 @@ class Tecnibo_Labels {
             'hierarchical' => true,
             'show_in_rest' => true,
             'rewrite' => array(
-                    'slug' => 'tecnibo-product-category',
-                    'with_front' => true
+                    'slug' => 'tecnibo-category',
+                    'with_front' => true,
+                    'hierarchical' => true
                     )
             ),
         );
@@ -89,7 +90,7 @@ class Tecnibo_Labels {
     
     public static function get_project_posttype() {
 
-        /* Product */
+        /* Projets */
         $labels = array(
             'name' => __('Projects', 'tecnibo'),
             'singular_name' => __('Project', 'tecnibo'),
@@ -112,7 +113,7 @@ class Tecnibo_Labels {
             'publicly_queryable' => true,
             'show_ui' => true,
             'query_var' => true,
-            'rewrite' => array ( 'slug' => 'tecnibo-projects'),
+            'rewrite' => array ( 'slug' => 'projects'),
             'capability_type' => 'post',
             'hierarchical' => false,
             'menu_position' => Null,
