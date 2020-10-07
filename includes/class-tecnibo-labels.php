@@ -119,7 +119,8 @@ class Tecnibo_Labels {
             'menu_position' => Null,
             'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
             'has_archive' => true,
-            'show_in_menu' => 'edit.php?post_type=tecnibo_product'
+            'show_in_menu' => 'edit.php?post_type=tecnibo_product',
+            'taxonomies' => array( 'product_category' )
         );
 
         $posttypes['tecnibo_project'] = array(
