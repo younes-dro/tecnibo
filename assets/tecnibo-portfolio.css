@@ -357,9 +357,9 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
   position: relative;
   background: #FFFFFF;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1400px) {
   #content .items a {
-    width: 100%;
+    width: 33.33%;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -367,9 +367,9 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
     width: 50%;
   }
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 500px) {
   #content .items a {
-    width: 33.33%;
+    width: 100%;
   }
 }
 #content .items a img {

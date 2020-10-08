@@ -303,6 +303,20 @@ class Tecnibo_Portfolio {
         
         
     }
+    public static function get_archive_subcat( $parent_id ){
+        $html = '';
+                $subcats = get_terms( array(
+                            'taxonomy' => 'product_category',
+                            'hide_empty' => false,
+                            'parent' => $parent_id,
+            ) );
+        foreach ($subcats as $sub_cat ) {
+            $html .= '<a href="'. get_term_link($sub_cat->slug, 'product_category') .'" title="">' . $sub_cat->name . '</a>';
+        }
+        
+        return $html;
+        
+    }
     public static function get_product_meta ( $meta_title , $meta , $post_id , $video = false ){
         $project_meta = get_post_meta( $post_id , $meta ,true);
         if ( $video ) 
