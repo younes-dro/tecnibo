@@ -92,8 +92,11 @@ body.tax-product_category h2.related_products_projects:after {
 /*--------------------------------------------------------------
 ## Category Product
 --------------------------------------------------------------*/
-header.custom_tax_header {
-  min-height: 350px;
+body.tax-product_category #content-wrap {
+  width: 100%;
+  min-width: 100% !important;
+}
+body.tax-product_category header.custom_tax_header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -101,26 +104,48 @@ header.custom_tax_header {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: grayscale(100%);
+  position: relative;
+  /* filter: grayscale(100%); */
+  padding: 0;
+  min-height: 250px;
 }
-
-header.custom_tax_header h1.custom-tax-title {
+body.tax-product_category header.custom_tax_header div.overlay-achive-page {
+  background-color: #000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: 4;
+}
+body.tax-product_category header.custom_tax_header h1.custom-tax-title {
   min-width: 25rem;
   border-width: 0.875rem;
-  padding: 3.75rem;
+  /* padding: 3.75rem; */
   border-color: rgba(255, 255, 255, 0.8);
+  z-index: 5;
   border-style: solid;
   color: #fff;
   font-size: 50px;
-  padding: 50px;
+  padding: 20px;
+  /* height: 50px; */
+  font-size: 30px;
+  text-align: center;
 }
-
-section.archive-description {
+@media screen and (min-width: 768px) {
+  body.tax-product_category header.custom_tax_header h1.custom-tax-title {
+    font-size: 35px;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.tax-product_category header.custom_tax_header h1.custom-tax-title {
+    font-size: 40px;
+  }
+}
+body.tax-product_category section.archive-description {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-
-section.archive-description p {
+body.tax-product_category section.archive-description p {
   font-size: 20px;
   font-weight: 400;
   color: #867e79;
@@ -129,6 +154,50 @@ section.archive-description p {
   max-width: 50%;
   margin: 0 auto;
   padding: 20px 0;
+}
+body.tax-product_category div.product_grid {
+  /*border: 1px solid #f00;*/
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+  /*text-align: center; */
+}
+body.tax-product_category div.product_grid a {
+  display: block;
+  /*float: left;*/
+  width: 25%;
+  overflow: hidden;
+  position: relative;
+  background: #FFFFFF;
+}
+body.tax-product_category div.product_grid a:hover {
+  color: #cf0400 !important;
+  border: 1px solid;
+}
+@media screen and (max-width: 1400px) {
+  body.tax-product_category div.product_grid a {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  body.tax-product_category div.product_grid a {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 500px) {
+  body.tax-product_category div.product_grid a {
+    width: 100%;
+  }
+}
+body.tax-product_category div.product_grid a img {
+  width: 100%;
+}
+body.tax-product_category div.product_grid a h3 {
+  margin-top: 10px;
+  text-align: center;
+}
+body.tax-product_category div.product_grid a h3:hover {
+  color: #cf0400 !important;
 }
 
 /*--------------------------------------------------------------

@@ -305,18 +305,74 @@ class Tecnibo_Portfolio {
     }
     public static function get_archive_subcat( $parent_id ){
         $html = '';
-                $subcats = get_terms( array(
-                            'taxonomy' => 'product_category',
-                            'hide_empty' => false,
-                            'parent' => $parent_id,
-            ) );
+        $subcats = get_terms( array(
+                        'taxonomy' => 'product_category',
+                        'hide_empty' => false,
+                        'parent' => $parent_id,
+        ) );
+        $html .= '<section class="tecnibo-row">';
         foreach ($subcats as $sub_cat ) {
-            $html .= '<a href="'. get_term_link($sub_cat->slug, 'product_category') .'" title="">' . $sub_cat->name . '</a>';
+            $taxonomy_id = $sub_cat->term_id;
+            $taxonomy_image_id = get_term_meta($taxonomy_id, 'showcase-taxonomy-image-id', true);
+            $taxonomy_image_url = wp_get_attachment_image_url($taxonomy_image_id,'full');            
+            $html .= '<header class="custom_tax_header" style="background-image: url('. $taxonomy_image_url .')">
+                <div class="overlay-achive-page"></div>
+                <h1 class="custom-tax-title">'.$sub_cat->name.'</h1></header> ';
+            // Products
+            $html .= self::get_archive_products_projetcs( 'tecnibo_product' , $taxonomy_id , $sub_cat->name);
+            // Projects
+            $html .= self::get_archive_products_projetcs( 'tecnibo_project' , $taxonomy_id , $sub_cat->name );  
+            
         }
+        $html .= '</section>';
         
         return $html;
         
     }
+    public static function get_archive_products_projetcs( $type , $term_id , $term_name ){
+        $args = array(
+            'post_type' => $type,
+            'orderby' => 'title',
+            'posts_per_page' => -1,
+            'order' => 'ASC',
+            'tax_query' => array(
+                array('taxonomy' => 'product_category',
+                    'field' => 'term_id',
+                    'terms' => $term_id
+                    )
+                ),
+            );
+        
+        
+        $query = new WP_Query($args);
+        if ( $query->have_posts() ) : 
+            $html   = '<div class="product_grid">';
+            $related = ( $type == 'tecnibo_product') ? __( 'Products','tecnibo' ) : __( 'Projects' , 'tecnibo' );
+            
+            $html .= '<h2 class="related_products_projects"><span>' . $term_name . ' ' .$related . '</span></h2>';            
+            while ( $query->have_posts() ) : $query->the_post();
+            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+            $html .='<a 
+                    title = "'.get_the_title().'" 
+                    href  ="'.get_the_permalink().'" 
+                    class ="" 
+                    rel="group" data-id="'.get_the_ID().'" >
+                    <img alt="' . get_the_title() .'" src="'. $featured_img_url .'">
+                    <h3>'.get_the_title().'</h3>
+                    </a>';
+        endwhile;
+        $html   .='</div>'; 
+        else : 
+                    $html .='<p>'.__( "Sorry, no products or projects  matched your criteria.", "tecnibo") .'</p>';
+        endif;
+        wp_reset_query();
+                                    
+        
+        
+        return $html;
+        
+    }
+    
     public static function get_product_meta ( $meta_title , $meta , $post_id , $video = false ){
         $project_meta = get_post_meta( $post_id , $meta ,true);
         if ( $video ) 
