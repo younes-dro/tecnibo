@@ -164,15 +164,16 @@ body.tax-product_category div.product_grid {
 }
 body.tax-product_category div.product_grid a {
   display: block;
-  /*float: left;*/
+  float: left;
   width: 25%;
   overflow: hidden;
   position: relative;
   background: #FFFFFF;
+  margin: 0 0px 20px 0;
 }
 body.tax-product_category div.product_grid a:hover {
-  color: #cf0400 !important;
-  border: 1px solid;
+  box-shadow: 1px 0px 3px #000;
+  /*border: 1px solid;*/
 }
 @media screen and (max-width: 1400px) {
   body.tax-product_category div.product_grid a {
@@ -428,7 +429,7 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
 }
 @media screen and (max-width: 1400px) {
   #content .items a {
-    width: 33.33%;
+    width: 35%;
   }
 }
 @media screen and (max-width: 1024px) {

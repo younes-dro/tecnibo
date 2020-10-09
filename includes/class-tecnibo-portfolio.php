@@ -349,7 +349,8 @@ class Tecnibo_Portfolio {
             $html   = '<div class="product_grid">';
             $related = ( $type == 'tecnibo_product') ? __( 'Products','tecnibo' ) : __( 'Projects' , 'tecnibo' );
             
-            $html .= '<h2 class="related_products_projects"><span>' . $term_name . ' ' .$related . '</span></h2>';            
+            $html .= '<h2 class="related_products_projects"><span>' . $term_name . ' ' .$related . '</span></h2>'; 
+            $html .='<div class="items">';
             while ( $query->have_posts() ) : $query->the_post();
             $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
             $html .='<a 
@@ -361,9 +362,10 @@ class Tecnibo_Portfolio {
                     <h3>'.get_the_title().'</h3>
                     </a>';
         endwhile;
+        $html .='</div>';
         $html   .='</div>'; 
         else : 
-                    $html .='<p>'.__( "Sorry, no products or projects  matched your criteria.", "tecnibo") .'</p>';
+                    $html .= ''; //<p>'.__( "Sorry, no products or projects  matched your criteria.", "tecnibo") .'</p>';
         endif;
         wp_reset_query();
                                     

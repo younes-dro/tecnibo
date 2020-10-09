@@ -66,13 +66,14 @@ body.tax-product_category{
         /*text-align: center; */
             a{
             display: block;
-            /*float: left;*/
+            float: left;
             width: 25%;
             overflow: hidden;
             position: relative;
             background: #FFFFFF;
+            margin: 0 0px 20px 0;
             &:hover{
-                color: rgb(207,4,0)!important;
+                box-shadow: 1px 0px 3px #000;
                 /*border: 1px solid;*/
             }
             @media screen and (max-width: 1400px){
