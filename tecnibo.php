@@ -236,6 +236,7 @@ class Tecnibo{
         /******** Portfolio */
         add_action ( 'init' , array ( $this , 'tecnibo_portfolio' ) );
         add_action ( 'init' , array ( $this , 'tecnibo_taxonomy_Images' ) );
+        add_action ( 'init' , array ( $this , 'display_author' ) );
         add_action ( 'add_meta_boxes', array ( $this , 'tecnibo_meta_boxes' ) );
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
@@ -261,7 +262,11 @@ class Tecnibo{
         $Showcase_Taxonomy_Images = new Tecnibo_Taxonomy_Images();
         $Showcase_Taxonomy_Images->init();
     }
-
+    public function display_author(){
+        add_post_type_support( 'tecnibo_product', array ( 'author' ) );      
+        
+        add_post_type_support( 'tecnibo_project', 'author' );
+    }
     public function tecnibo_meta_boxes( ) {
         new  Tecnibo_Portfolio();
     }
