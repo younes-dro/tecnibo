@@ -577,4 +577,107 @@ body.single-tecnibo_project section.tecnibo-row > h4 {
   display: block;
 }
 
+/*--------------------------------------------------------------
+## Team page
+--------------------------------------------------------------*/
+body.post-type-archive-tecnibo_member div.tecnibo-team {
+  /*background-color: #e5e5e5;*/
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team:after, body.post-type-archive-tecnibo_member div.tecnibo-team:before {
+  display: table;
+  content: " ";
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team:after {
+  clear: both;
+}
+@media screen and (min-width: 768px) {
+  body.post-type-archive-tecnibo_member div.tecnibo-team {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.post-type-archive-tecnibo_member div.tecnibo-team {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body.post-type-archive-tecnibo_member div.tecnibo-team {
+    width: 1170px;
+  }
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team {
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team:after, body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team:before {
+  display: table;
+  content: " ";
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.heading-title {
+  padding-left: 15px;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.heading-title h1 {
+  color: #000;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 60px 0 0;
+  text-align: left;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.heading-title p {
+  text-align: left;
+  color: #111;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member {
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.member-image {
+  background-position: top center;
+  background-size: cover;
+  border: 1px solid #fff;
+  min-height: 390px;
+  filter: grayscale(1);
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.member-image:hover {
+  filter: grayscale(0);
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.team-title h3 {
+  color: #111;
+  text-transform: uppercase;
+  margin: 10px 0 0 0;
+  letter-spacing: 2px;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.team-title h5 {
+  color: #3b3b3b;
+  text-transform: uppercase;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.social-container {
+  text-align: center;
+  min-height: 32px;
+}
+body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member div.social-container a {
+  padding: 5px 15px;
+}
+@media screen and (min-width: 768px) {
+  body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member {
+    width: 50%;
+    float: left;
+  }
+}
+@media screen and (min-width: 992px) {
+  body.post-type-archive-tecnibo_member div.tecnibo-team div.row-team div.col-member {
+    width: 33.33333333%;
+    float: left;
+  }
+}
+
 /*# sourceMappingURL=tecnibo-portfolio.css.map */

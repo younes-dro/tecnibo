@@ -26,7 +26,8 @@ class Tecnibo_Portfolio {
         
         add_meta_box( 'product_metabox', __( 'Select Tecnibo projects that have used this product', 'tecnibo' ), array( $this , 'product_metabox' ), 'tecnibo_product', 'normal', 'default' );
         add_meta_box( 'project_metabox', __( 'Select Tecnibo products that are used by this project', 'tecnibo' ), array( $this , 'project_metabox' ), 'tecnibo_project', 'normal', 'default' );
-        add_meta_box( 'project_details_metabox', __( 'Project Details', 'tecnibo' ), array( $this , 'project_details_metabox' ), 'tecnibo_project', 'normal', 'default' );            
+        add_meta_box( 'project_details_metabox', __( 'Project Details', 'tecnibo' ), array( $this , 'project_details_metabox' ), 'tecnibo_project', 'normal', 'default' ); 
+        add_meta_box( 'team_social_metabox', __( 'Social', 'tecnibo' ), array( $this , 'team_social_metabox' ), 'tecnibo_member', 'normal', 'default' );         
     }
 
     public static function create_portfolio(){
@@ -48,6 +49,12 @@ class Tecnibo_Portfolio {
          */
         $dro_project_post_type = new DRO_PostType( Tecnibo_Labels::get_project_posttype() );
         $dro_project_post_type->register_post_type();     
+        
+        /**
+         * Create the Members Custom Post Type
+         */
+        $dro_member_post_type = new DRO_PostType( Tecnibo_Labels::get_team_posttype() );
+        $dro_member_post_type->register_post_type();         
     }
     
     public function product_metabox( $post_object ){
@@ -217,6 +224,27 @@ class Tecnibo_Portfolio {
         
              
     }
+    public static function save_member_metabox ( $post_id ){
+
+        if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
+        
+        
+        if ( isset( $_POST['member_linkedin'] ) ){
+            
+            update_post_meta( $post_id, '_member_linkedin', strip_tags( stripslashes( $_POST['member_linkedin'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_member_linkedin' );
+        } 
+        
+        if ( isset( $_POST['member_twitter'] ) ){
+            
+            update_post_meta( $post_id, '_member_twitter', strip_tags( stripslashes( $_POST['member_twitter'] ) ) );
+        } else {
+            delete_post_meta ( $post_id, '_member_twitter' );
+        }        
+        
+             
+    }    
     public function project_details_metabox($post_object) {
         
 	$scope          = get_post_meta( $post_object->ID, '_project_scope', true );
@@ -246,6 +274,23 @@ class Tecnibo_Portfolio {
 	$html .= '<p><label for="project_video">'.__( 'Video:(The format video link  https://www.youtube.com/<b>embed</b>/)','tecnibo').'</label><br />';
         $html .= '<input placeholder="Youtube" class="widefat" type="text" id="project_video" name="project_video" value="'.$video.'" />';
 	$html .= '</p>';  
+        
+	echo $html;        
+    }
+    public function team_social_metabox($post_object) {
+        
+	$linkedin       = get_post_meta( $post_object->ID, '_member_linkedin', true );
+        $twitter       = get_post_meta( $post_object->ID, '_member_twitter', true );
+        
+        
+        $html = '';
+	$html .= '<p><label for="member_linkedin">'.__( 'LinkedIn ID:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="member_linkedin" name="member_linkedin" value="'.$linkedin.'" /> ';
+	$html .= '</p>';
+       
+	$html .= '<p><label for="member_twitter">'.__( 'Twitter ID:','tecnibo').'</label><br />';
+        $html .= '<input class="widefat" type="text" id="member_twitter" name="member_twitter" value="'.$twitter.'" /> ';
+	$html .= '</p>';         
         
 	echo $html;        
     }
@@ -520,6 +565,58 @@ class Tecnibo_Portfolio {
         $pdf_url = ( !empty ($pdf_file) ) ? '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'">'.__( 'Technical data of this product','tecnibo' ) .'<i class="far fa-file-pdf"></i></a>' : '';
         
         return $pdf_url;
+    }
+    public static function get_team_members(){
+        
+        $html = '';
+        
+        $html .= '<div class="tecnibo-team">
+                    <div class="row-team">';
+        $html .= '<div class="heading-title">
+                    <h1>'.__( 'Our professionals', 'tecnibo' ) .' </h1>
+                    <p>'.__( 'Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend','tecnibo').' </p>
+                  </div>';
+        
+        $args =  array (
+            'post_status' => array ( 'publish' ),
+            'post_type' => 'tecnibo_member' ,
+            'posts_per_page' => 50, 
+            'orderby' => 'title', 
+            'order' => 'ASC'
+            );
+            $query = new WP_Query($args);
+            if ( $query->have_posts() ) :
+                while ( $query->have_posts() ) :
+                    $query->the_post();
+                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
+                    $html .= '<div class="col-member">';
+                    
+                    $html .= '<div class="member-image" style="background-image:url('.$featured_img_url.')"></div>';
+
+                    
+                    $html .='<div class="team-title">
+                                <h3>'.get_the_title() .'</h3>
+                                <h5>'.get_the_excerpt().'</h5>
+                            </div>';
+                    $html .='<div class="social-container">';
+                    if ( self::has_meta ( '_member_linkedin' , get_the_ID()) ){
+                        $html .= '<a href="https://linkedin.com/in/'.get_post_meta( get_the_ID(), '_member_linkedin', true ).'"><span class="dashicons dashicons-linkedin"></span></a>';
+                    }
+                    if ( self::has_meta ( '_member_twitter' , get_the_ID()) ){
+                        $html .= '<a href="https://twitter.com/'.get_post_meta( get_the_ID(), '_member_twitter', true ).'"><span class="dashicons dashicons-twitter"></span></a>';
+                    }  
+                    $html .= '</div>';
+                    
+                    $html .= '</div>';// .col                    
+            
+                endwhile;
+            endif;
+            wp_reset_query();
+            $html .= '</div>';
+            $html .= '</div>';
+            
+            return $html;
     }
 }
 

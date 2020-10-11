@@ -128,6 +128,47 @@ class Tecnibo_Labels {
         );
         
         return $posttypes;
+    }  
+    
+    public static function get_team_posttype() {
+
+        /* Team */
+        $labels = array(
+            'name' => __('Tecnibo Team', 'tecnibo'),
+            'singular_name' => __('Team', 'tecnibo'),
+            'add_new' => __('Add New', 'tecnibo'),
+            'add_new_item' => __('Add New Member', 'tecnibo'),
+            'edit_item' => __('Edit Member', 'tecnibo'),
+            'new_item' => __('New Member', 'tecnibo'),
+            'all_items' => __('Team', 'tecnibo'),
+            'view_item' => __('View Member', 'tecnibo'),
+            'search_items' => __('Search Member', 'tecnibo'),
+            'not_found' => __('No Members found', 'tecnibo'),
+            'not_found_in_trash' => __('No Members found in the Trash'),
+            'parent_item_colon' => '',
+            'menu_name' => 'Tecnibo'
+        );
+        $args = array(
+            'labels' => $labels,
+            'description' => __('Add Member for Tecnibo Team', 'tecnibo'),
+            'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'rewrite' => array ( 'slug' => 'team'),
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'menu_position' => Null,
+            'supports' => array('title', 'excerpt', 'thumbnail'),
+            'has_archive' => true,
+            'show_in_menu' => 'edit.php?post_type=tecnibo_product'
+        );
+
+        $posttypes['tecnibo_member'] = array(
+            'posttype_options' => $args
+        );
+        
+        return $posttypes;
     }    
 
 }

@@ -241,6 +241,7 @@ class Tecnibo{
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
+        add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_member_metabox'  ) );        
         add_action ( 'post_edit_form_tag', array( 'Tecnibo_Portfolio' , 'update_edit_form' ) );
                 
         /******** Scripts */
@@ -252,9 +253,12 @@ class Tecnibo{
         
         /******* Ajax */
         add_action( 'wp_ajax_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );
-        add_action( 'wp_ajax_nopriv_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );        
+        add_action( 'wp_ajax_nopriv_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );
+        
+        /****** Helper */
+        add_action( 'current_screen' , array ( $this , 'tecnibo_herlper' ) );
     }
-
+        
     public function tecnibo_portfolio(){
          Tecnibo_Portfolio::create_portfolio();
     }
@@ -296,6 +300,7 @@ class Tecnibo{
         global $post;
         if ( $post->post_type == 'tecnibo_product' 
                 || $post->post_type == 'tecnibo_project' 
+                || $post->post_type == 'tecnibo_member'
                 || is_page_template( 'projects-page.php' ) 
                 || is_tax()
                 ) {
@@ -310,13 +315,18 @@ class Tecnibo{
             wp_enqueue_style( 'tecnibo-slick-lightbox-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css' );
             
             wp_enqueue_style( 'tecnibo-portfolio-css', $this->plugin_url() . '/assets/tecnibo-portfolio.css', array ('oceanwp-style') );
+             wp_enqueue_style('dashicons');
         }        
     }
     public function tecnibo_ajax_request_products() {
         Tecnibo_Ajax::Get_Products();
     }
 
-
+    public function tecnibo_herlper(){
+        $current_screen = get_current_screen();
+        if ( $current_screen->post_type == 'tecnibo_member' )
+            new Tecnibo_Helper();
+    }
     /*-----------------------------------------------------------------------------------*/
     /*  Helper Functions                                                                 */
     /*-----------------------------------------------------------------------------------*/
