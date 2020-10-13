@@ -36,10 +36,14 @@ get_header(); ?>
                                 </div><!-- .product-catalog -->
                                 
                                 <div class="product-detail">
+                                    <h1><?php the_title();?></h1>
                                     <?php the_content();?>
                                     <div class="divider"><hr class="flush"></div>
                                     <?php 
-                                    if ( Tecnibo_Portfolio::has_meta( '_pdf_file' , get_the_ID() ) )
+
+                                    if ( Tecnibo_Portfolio::has_meta( '_pdf_file' , get_the_ID() )
+                                            || Tecnibo_Portfolio::has_meta( '_pdf_file_1' , get_the_ID() )
+                                            || Tecnibo_Portfolio::has_meta( '_pdf_file_2' , get_the_ID() ))
                                             echo Tecnibo_Portfolio::get_pdf_link ( get_the_ID() ) ;
                                     ?>
                                 </div><!-- .product-detail -->

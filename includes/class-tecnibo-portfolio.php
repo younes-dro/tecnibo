@@ -90,12 +90,29 @@ class Tecnibo_Portfolio {
 	$html .= '</select></p>';
         //PDF
         $pdf_file = get_post_meta( $post_object->ID , '_pdf_file', true );
-        $pdf_url = ( !empty ($pdf_file) ) ? '<a target="_blank" href="' . $pdf_file['url'] .'"><span class="dashicons dashicons-pdf"></span></a>' : '';
+        $pdf_url = ( !empty ($pdf_file) ) ? '<a target="_blank" href="' . $pdf_file['url'] .'"><span class="dashicons dashicons-pdf"></span> '.self::get_pdf_name($pdf_file['url']).'</a>' : '';
         $html .= '<p class="description">';
-        $html .= __( 'Technical brochure: (The file must be a PDF format <b>.pdf</b>)','tecnibo' ) ;
+        $html .= __( 'Technical brochure 1: (<b>.pdf</b>)','tecnibo' ) ;
         $html .= '</p>';
         $html .= '<input type="file" id="pdf_file" name="pdf_file" value="" size="25">';
         $html .= '<br><br>'.$pdf_url;
+        
+        $pdf_file_1 = get_post_meta( $post_object->ID , '_pdf_file_1', true );
+        $pdf_url_1 = ( !empty ($pdf_file_1) ) ? '<a target="_blank" href="' . $pdf_file_1['url'] .'"><span class="dashicons dashicons-pdf"></span> '.self::get_pdf_name($pdf_file_1['url']).'</a>' : '';
+        $html .= '<p class="description">';
+        $html .= __( 'Technical brochure 2: (<b>.pdf</b>)','tecnibo' ) ;
+        $html .= '</p>';
+        $html .= '<input type="file" id="pdf_file_1" name="pdf_file_1" value="" size="25">';
+        $html .= '<br><br>'.$pdf_url_1;  
+        
+        $pdf_file_2 = get_post_meta( $post_object->ID , '_pdf_file_2', true );
+        $pdf_url_2 = ( !empty ($pdf_file_2) ) ? '<a target="_blank" href="' . $pdf_file_2['url'] .'"><span class="dashicons dashicons-pdf"></span> '.self::get_pdf_name($pdf_file_2['url']).'</a>' : '';
+        $html .= '<p class="description">';
+        $html .= __( 'Technical brochure 3: (<b>.pdf</b>)','tecnibo' ) ;
+        $html .= '</p>';
+        $html .= '<input type="file" id="pdf_file_2" name="pdf_file_2" value="" size="25">';
+        $html .= '<br><br>'.$pdf_url_2;         
+        
 	echo $html;        
     }
     public static function update_edit_form (){
@@ -134,6 +151,40 @@ class Tecnibo_Portfolio {
                     wp_die( __( 'There was an error uploading your file. The error is: ','tecnibo' ) . $upload['error'] );
                 } else {
                     update_post_meta( $post_id, '_pdf_file', $upload );
+                }
+            }
+            else {
+                wp_die( __( 'The file type that you\'ve uploaded is not a PDF.' , 'tecnibo' ) );
+            }
+        }  
+        if( ! empty( $_FILES['pdf_file_1']['name'] ) ) {
+            $supported_types = array( 'application/pdf' );
+            $arr_file_type = wp_check_filetype( basename( $_FILES['pdf_file_1']['name'] ) );
+            $uploaded_type = $arr_file_type['type'];
+
+            if( in_array( $uploaded_type, $supported_types ) ) {
+                $upload = wp_upload_bits( $_FILES['pdf_file_1']['name'], null, file_get_contents( $_FILES['pdf_file_1']['tmp_name'] ) );
+                if( isset( $upload['error'] ) && $upload['error'] != 0 ) {
+                    wp_die( __( 'There was an error uploading your file. The error is: ','tecnibo' ) . $upload['error'] );
+                } else {
+                    update_post_meta( $post_id, '_pdf_file_1', $upload );
+                }
+            }
+            else {
+                wp_die( __( 'The file type that you\'ve uploaded is not a PDF.' , 'tecnibo' ) );
+            }
+        }
+        if( ! empty( $_FILES['pdf_file_2']['name'] ) ) {
+            $supported_types = array( 'application/pdf' );
+            $arr_file_type = wp_check_filetype( basename( $_FILES['pdf_file_2']['name'] ) );
+            $uploaded_type = $arr_file_type['type'];
+
+            if( in_array( $uploaded_type, $supported_types ) ) {
+                $upload = wp_upload_bits( $_FILES['pdf_file_2']['name'], null, file_get_contents( $_FILES['pdf_file_2']['tmp_name'] ) );
+                if( isset( $upload['error'] ) && $upload['error'] != 0 ) {
+                    wp_die( __( 'There was an error uploading your file. The error is: ','tecnibo' ) . $upload['error'] );
+                } else {
+                    update_post_meta( $post_id, '_pdf_file_2', $upload );
                 }
             }
             else {
@@ -561,10 +612,34 @@ class Tecnibo_Portfolio {
     }
     public static function get_pdf_link ( $product_id ){
         
+        $html = '';
+        $html = '<h2>'. __('Technical documents:','tecnibo') .'</h2>';
         $pdf_file = get_post_meta( $product_id, '_pdf_file', true );
-        $pdf_url = ( !empty ($pdf_file) ) ? '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'">'.__( 'Technical data of this product','tecnibo' ) .'<i class="far fa-file-pdf"></i></a>' : '';
+        $pdf_file_1 = get_post_meta( $product_id, '_pdf_file_1', true );
+        $pdf_file_2 = get_post_meta( $product_id, '_pdf_file_2', true );
         
-        return $pdf_url;
+        if ( ! empty($pdf_file) ){
+            $pdf_name =  self::get_pdf_name( $pdf_file['url'] ) ;
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name .'</a>';
+        }
+        
+        if ( ! empty($pdf_file_1) ){
+            $pdf_name_1 = self::get_pdf_name( $pdf_file_1['url'] );
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_1['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name_1 .'</a>';
+        }        
+       
+        if ( ! empty($pdf_file_2) ){
+            $pdf_name_2 = self::get_pdf_name( $pdf_file_2['url'] );
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_2['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name_2 .'</a>';
+        }        
+
+        return $html;
+        
+        
+    }
+    public static function get_pdf_name ( $pdf_url ){
+        
+        return basename ( str_replace( site_url('/'), ABSPATH, esc_url( $pdf_url ) ) );
     }
     public static function get_team_members(){
         
