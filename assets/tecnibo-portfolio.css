@@ -138,7 +138,7 @@ body.tax-product_category header.custom_tax_header h1.custom-tax-title {
 }
 @media screen and (min-width: 992px) {
   body.tax-product_category header.custom_tax_header h1.custom-tax-title {
-    font-size: 40px;
+    font-size: 50px;
   }
 }
 body.tax-product_category section.archive-description {
