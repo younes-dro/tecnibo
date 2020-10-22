@@ -666,23 +666,27 @@ class Tecnibo_Portfolio {
             $html .= ' <button class="button" data-filter=".'.$office->slug.'">'.$office->name.'</button>';
         }
         $html .= '</div>';
+        
+        // CEO/COO
+        
+        
         $args =  array (
             'post_status' => array ( 'publish' ),
             'post_type' => 'tecnibo_member' ,
-            'posts_per_page' => -1, 
-            'orderby' => 'title', 
+            'posts_per_page' => -1,
+            'meta_key' => 'ceocoo',
+            'meta_value' => array('ceo','coo', 'w'),
+            'orderby' => 'meta_value title',
             'order' => 'ASC'
             );
             $query = new WP_Query($args);
             if ( $query->have_posts() ) :
                 $html .= '<div class="grid-team">';
                 while ( $query->have_posts() ) :
-
                     $query->the_post();
                     $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
                     $the_offices = get_the_terms( get_the_ID() , 'tecnibo_offices' ); 
                     if ( $the_offices){
-                        
                         $office = '';
                         foreach ($the_offices as $the_office ){
                             $office .= $the_office->slug . ' ';
@@ -707,7 +711,6 @@ class Tecnibo_Portfolio {
                         $html .= '<a href="https://twitter.com/'.get_post_meta( get_the_ID(), '_member_twitter', true ).'"><span class="dashicons dashicons-twitter"></span></a>';
                     }  
                     $html .= '</div>';
-                    
                     $html .= '</div>';// .col                    
                     
                 endwhile;
