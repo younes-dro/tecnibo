@@ -311,6 +311,7 @@ class Tecnibo{
             wp_enqueue_script('tecnibo-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Tecnibo()->version, true);            
             wp_enqueue_script('tecnibo-slick-lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js', array('jquery',), Tecnibo()->version, true);            
             
+            wp_enqueue_script('tecnibo-isotope-js' , 'https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js' , array('jquery',), Tecnibo()->version, true);
             
             wp_enqueue_script('tecnibo-front-js', $this->plugin_url() . '/assets/tecnibo-front.js', array('jquery',), Tecnibo()->version, true);            
             

@@ -652,21 +652,46 @@ class Tecnibo_Portfolio {
                     <p>'.__( 'Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend','tecnibo').' </p>
                   </div>';
         
+        
+        $offices_args = array(
+            'orderby'       => 'term_id',
+            'order'         => 'ASC',
+            'hide_empty'    => true
+            );
+        $offices = get_terms('tecnibo_offices', $offices_args);
+
+        $html .= '<div class="button-group filters-button-group">';
+        $html .= ' <button class="button is-checked " data-filter="*"><i class="fas fa-list"></i>'.__('show all','tecnibo').'</button>';
+        foreach ($offices as $office) {
+            $html .= ' <button class="button" data-filter=".'.$office->slug.'">'.$office->name.'</button>';
+        }
+        $html .= '</div>';
         $args =  array (
             'post_status' => array ( 'publish' ),
             'post_type' => 'tecnibo_member' ,
-            'posts_per_page' => 50, 
+            'posts_per_page' => -1, 
             'orderby' => 'title', 
             'order' => 'ASC'
             );
             $query = new WP_Query($args);
             if ( $query->have_posts() ) :
+                $html .= '<div class="grid-team">';
                 while ( $query->have_posts() ) :
-                    $query->the_post();
-                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
 
-                    $html .= '<div class="col-member">';
+                    $query->the_post();
+                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                    $the_offices = get_the_terms( get_the_ID() , 'tecnibo_offices' ); 
+                    if ( $the_offices){
+                        
+                        $office = '';
+                        foreach ($the_offices as $the_office ){
+                            $office .= $the_office->slug . ' ';
+                        }
+                        $html .= '<div class="col-member '.$office.' ">';
                     
+                    }  else{                  
+                    $html .= '<div class="col-member ">';
+                    }
                     $html .= '<div class="member-image" style="background-image:url('.$featured_img_url.')"></div>';
 
                     
@@ -684,8 +709,9 @@ class Tecnibo_Portfolio {
                     $html .= '</div>';
                     
                     $html .= '</div>';// .col                    
-            
+                    
                 endwhile;
+                $html .='</div>';
             endif;
             wp_reset_query();
             $html .= '</div>';
