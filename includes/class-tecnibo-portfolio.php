@@ -684,7 +684,7 @@ class Tecnibo_Portfolio {
                 $html .= '<div class="grid-team">';
                 while ( $query->have_posts() ) :
                     $query->the_post();
-                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                    $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
                     $the_offices = get_the_terms( get_the_ID() , 'tecnibo_offices' ); 
                     if ( $the_offices){
                         $office = '';
