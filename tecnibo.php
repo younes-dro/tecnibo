@@ -311,8 +311,6 @@ class Tecnibo{
             wp_enqueue_script('tecnibo-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Tecnibo()->version, true);            
             wp_enqueue_script('tecnibo-slick-lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js', array('jquery',), Tecnibo()->version, true);            
             
-            wp_enqueue_script('tecnibo-isotope-js' , 'https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js' , array('jquery',), Tecnibo()->version, true);
-            
             wp_enqueue_script('tecnibo-front-js', $this->plugin_url() . '/assets/tecnibo-front.js', array('jquery',), Tecnibo()->version, true);            
             
             wp_enqueue_style( 'tecnibo-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
@@ -321,7 +319,12 @@ class Tecnibo{
             
             wp_enqueue_style( 'tecnibo-portfolio-css', $this->plugin_url() . '/assets/tecnibo-portfolio.css', array ('oceanwp-style') );
              wp_enqueue_style('dashicons');
-        }        
+        }
+        if( $post->post_type == 'tecnibo_member' ){
+            
+            wp_enqueue_script('tecnibo-isotope-js' , 'https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js' , array('jquery',), Tecnibo()->version, true);
+            wp_enqueue_script('tecnibo-team-js', $this->plugin_url() . '/assets/tecnibo-team.js', array('jquery','tecnibo-isotope-js'), Tecnibo()->version, true);                        
+        }
     }
     public function tecnibo_ajax_request_products() {
         Tecnibo_Ajax::Get_Products();
