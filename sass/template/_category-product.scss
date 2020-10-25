@@ -56,7 +56,11 @@ body.tax-product_category{
         text-align: center;
         max-width: 50%;
         margin: 0 auto;
-        padding: 20px 0;    
+        padding: 20px 0;   
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        text-align: left;
+        padding-left: 20px;
     }
     div.product_grid{
         /*border: 1px solid #f00;*/
