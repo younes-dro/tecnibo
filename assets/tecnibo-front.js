@@ -46,7 +46,10 @@
             src: 'src',
             itemSelector: '.projetc-item-image > img'
         });
-
+         
+                $('#tecnibo-canditate').click(function () {
+                    $(this).closest('.elementor-section').next().slideToggle();
+                });
         /* Product Display the full featured image carousel  */
         $('.element-carousel-product').on('click', function (event) {
             event.preventDefault();
