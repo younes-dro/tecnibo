@@ -47,20 +47,23 @@ body.tax-product_category{
     section.archive-description{
         margin-top: 15px;
         margin-bottom: 15px;
-    }
-    section.archive-description p{
-        font-size: 20px;
-        font-weight: 400;
-        color: #867e79;
-        line-height: 1.85;
-        text-align: center;
-        max-width: 50%;
-        margin: 0 auto;
-        padding: 20px 0;   
-        border-left: 1px solid;
-        border-bottom: 1px solid;
-        text-align: left;
-        padding-left: 20px;
+        p{
+            font-size: 14px;
+            font-weight: 400;
+            color: #867e79;
+            line-height: 1.85;
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 0px 0px 0px 20px;   
+            border-left: 1px solid;
+            text-align: left;
+            @media screen and (min-width:992px){
+                font-size: 20px;
+            }
+            &:last-child{
+                border-bottom: 1px solid;
+            }
+        }
     }
     div.product_grid{
         /*border: 1px solid #f00;*/
@@ -68,7 +71,7 @@ body.tax-product_category{
         max-width: 90%;
         margin: 0 auto ;    
         /*text-align: center; */
-            a{
+        a{
             display: block;
             float: left;
             width: 25%;
