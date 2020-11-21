@@ -18,7 +18,7 @@ class Tecnibo_Labels {
             'add_new_item' => __('Add New Product', 'tecnibo'),
             'edit_item' => __('Edit Product', 'tecnibo'),
             'new_item' => __('New Product', 'tecnibo'),
-            'all_items' => __('All Products', 'tecnibo'),
+            'all_items' => __('Products', 'tecnibo'),
             'view_item' => __('View Product', 'tecnibo'),
             'search_items' => __('Search Product', 'tecnibo'),
             'not_found' => __('No Products found', 'tecnibo'),
@@ -98,7 +98,7 @@ class Tecnibo_Labels {
             'add_new_item' => __('Add New Project', 'tecnibo'),
             'edit_item' => __('Edit Project', 'tecnibo'),
             'new_item' => __('New Project', 'tecnibo'),
-            'all_items' => __('All Projects', 'tecnibo'),
+            'all_items' => __('Projects', 'tecnibo'),
             'view_item' => __('View Project', 'tecnibo'),
             'search_items' => __('Search Project', 'tecnibo'),
             'not_found' => __('No Projects found', 'tecnibo'),
@@ -169,6 +169,6 @@ class Tecnibo_Labels {
         );
         
         return $posttypes;
+    } 
+    
     }    
-
-}

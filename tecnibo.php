@@ -241,6 +241,7 @@ class Tecnibo{
         add_action ( 'add_meta_boxes', array ( $this , 'tecnibo_meta_boxes' ) );
         add_filter( 'single_template', array ( $this , 'load_product_template' ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_product_metabox'  ) );
+        add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_variations_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_member_metabox'  ) );        
         add_action ( 'post_edit_form_tag', array( 'Tecnibo_Portfolio' , 'update_edit_form' ) );
@@ -317,7 +318,7 @@ class Tecnibo{
             wp_enqueue_style( 'tecnibo-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
             wp_enqueue_style( 'tecnibo-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css');
             wp_enqueue_style( 'tecnibo-slick-lightbox-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css' );
-            
+   
             wp_enqueue_style( 'tecnibo-portfolio-css', $this->plugin_url() . '/assets/tecnibo-portfolio.css', array ('oceanwp-style') );
              wp_enqueue_style('dashicons');
         }

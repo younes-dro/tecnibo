@@ -24,8 +24,9 @@ class Tecnibo_Portfolio {
         
     public function __construct(){
         
-        add_meta_box( 'product_metabox', __( 'Select Tecnibo projects that have used this product', 'tecnibo' ), array( $this , 'product_metabox' ), 'tecnibo_product', 'normal', 'default' );
-        add_meta_box( 'project_metabox', __( 'Select Tecnibo products that are used by this project', 'tecnibo' ), array( $this , 'project_metabox' ), 'tecnibo_project', 'normal', 'default' );
+        add_meta_box( 'product_metabox', __( 'Product Meta Data', 'tecnibo' ), array( $this , 'product_metabox' ), 'tecnibo_product', 'normal', 'default' );
+        add_meta_box( 'variable_product_metabox', __( 'Variable Product', 'tecnibo' ), array( $this , 'variable_product_metabox' ), 'tecnibo_product', 'normal', 'default' );        
+        add_meta_box( 'project_metabox', __( 'Select products that are used by this project', 'tecnibo' ), array( $this , 'project_metabox' ), 'tecnibo_project', 'normal', 'default' );
         add_meta_box( 'project_details_metabox', __( 'Project Details', 'tecnibo' ), array( $this , 'project_details_metabox' ), 'tecnibo_project', 'normal', 'default' ); 
         add_meta_box( 'team_social_metabox', __( 'Social', 'tecnibo' ), array( $this , 'team_social_metabox' ), 'tecnibo_member', 'normal', 'default' );         
     }
@@ -37,7 +38,7 @@ class Tecnibo_Portfolio {
          */
         $dro_post_type = new DRO_PostType( Tecnibo_Labels::get_posttype() );
         $dro_post_type->register_post_type();
-
+        
         /**
          * Create the Product Category taxonomies
          */
@@ -54,7 +55,7 @@ class Tecnibo_Portfolio {
          * Create the Members Custom Post Type
          */
         $dro_member_post_type = new DRO_PostType( Tecnibo_Labels::get_team_posttype() );
-        $dro_member_post_type->register_post_type();         
+        $dro_member_post_type->register_post_type();  
     }
     
     public function product_metabox( $post_object ){
@@ -113,8 +114,51 @@ class Tecnibo_Portfolio {
         $html .= '<input type="file" id="pdf_file_2" name="pdf_file_2" value="" size="25">';
         $html .= '<br><br>'.$pdf_url_2;         
         
+        // Display Product in Main Menu
+        
+        
+        $display_mainmenu = get_post_meta ( $post_object->ID, '_display_mainmenu' , true );
+        ($display_mainmenu == "yes") ? $field_checked = 'checked="checked"' : '';
+        $html .= '<p class="description">';
+        $html .= '<input  name="_display_mainmenu" value="yes" '.$field_checked.' type="checkbox" >';
+        $html .= '<label>'.__('Show in MainMenu?','tecnibo').'</label>';
+        $html .= '</p>';
 	echo $html;        
     }
+        public function variable_product_metabox( $post_object ){
+
+            $appended_variations = get_post_meta( $post_object->ID, '_variations',false );
+            $has_variations = false;
+            if(count($appended_variations) ){
+                $has_variations = true;
+            }
+        
+        $html = '';
+	$html .= '<p><label for="tecnibo_variations">'.__( 'Variations:','tecnibo').'</label><br />';
+        $html .= '<select id="tecnibo_variations" name="tecnibo_variations[]" multiple="multiple" style="width:99%;max-width:25em;">';
+ 
+	$search_results = new WP_Query( array( 
+		'post_status' => 'publish',
+                'post_type' => 'tecnibo_product' ,
+		'ignore_sticky_posts' => 1,
+		'posts_per_page' => 50, 
+                'orderby' => 'title', 
+                'order' => 'ASC'
+	) );        
+	if( $search_results->have_posts() ) :
+		while( $search_results->have_posts() ) : $search_results->the_post();	
+			
+			$title      = $search_results->post->post_title;
+                        $product_id = $search_results->post->ID;
+                        $selected = ( $has_variations && in_array( $product_id, $appended_variations[0] ) ) ? ' selected="selected"' : '';
+                        $html .=  '<option value="' . $product_id . '" '. $selected .' >' . $title . '</option>';
+			
+		endwhile;
+	endif;
+	$html .= '</select></p>';
+        
+        echo $html;
+        }
     public static function update_edit_form (){
         echo ' enctype="multipart/form-data"';
     }
@@ -190,8 +234,30 @@ class Tecnibo_Portfolio {
             else {
                 wp_die( __( 'The file type that you\'ve uploaded is not a PDF.' , 'tecnibo' ) );
             }
-        }        
+        }
+        update_post_meta($post_id, "_display_mainmenu", $_POST["_display_mainmenu"]);
 
+    }
+    public function save_variations_metabox( $post_id){
+        if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
+        
+        if ( isset( $_POST['tecnibo_variations'] ) ) {
+
+            $sanitized_data = array();
+
+            $data = (array) $_POST['tecnibo_variations'];
+
+            foreach ($data as $key => $value) {
+
+                $sanitized_data[ $key ] = (int)strip_tags( stripslashes( $value ) );
+
+            }
+
+            update_post_meta( $post_id, '_variations', $sanitized_data );
+
+        }  else {
+            delete_post_meta ( $post_id, '_variations' );
+        }        
     }
     public function project_metabox( $post_object ){
         
@@ -352,6 +418,10 @@ class Tecnibo_Portfolio {
         
         return false;
     }
+    public static function has_variations ( $post_id ){
+        
+        return self::has_meta( '_variations', $post_id , false);
+    }
     public static function has_related_objects( $post_id ){
         
         $posttype = get_post_type( $post_id );
@@ -499,6 +569,37 @@ class Tecnibo_Portfolio {
             return __( 'Class "Dynamic_Featured_Image" not loaded' , 'tecnibo' );
         }
     }
+    public function get_variations( $post_id ){
+        $html  = '';
+        $html .= '<h2>'.__('Variations Disponibles:','').'</h2>';
+        $html .= '<div class="container-fluid product_variations">';
+        $html .= '<div class="row">';
+//        $html .= '<div class="items col-12 col-md-3">';        
+        
+        $variations =  get_post_meta( $post_id , '_variations');
+        $search_results = new WP_Query( array (
+            'post_type' => 'tecnibo_product',
+            'post__in' => $variations[0]
+        ) );
+        while( $search_results->have_posts() ) : $search_results->the_post();
+            
+            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
+            $html .='<a 
+                    title = "'.get_the_title().'" 
+                    href  ="'.get_the_permalink().'" 
+                    class ="col-12 col-sm-6 col-md-4 col-lg-4" 
+                    rel="group" data-id="'.get_the_ID().'" >
+                    <img alt="' . get_the_title() .'" src="'. $featured_img_url .'">
+                    <h3>'.get_the_title().'</h3>
+                    </a>';                    
+        endwhile; 
+        $html .= '</div>';
+        $html .= '</div>';
+//        $html   .= '</div>';
+        wp_reset_query();
+        
+        return $html;
+    }
     public static function get_related_products_projects ( $meta , $post_id  , $post_type  ){
         
         $outside_objects = self::get_outside_objects( $post_id , $post_type);
@@ -522,7 +623,7 @@ class Tecnibo_Portfolio {
                                 class="" 
                                 rel="group" data-id="'.get_the_ID().'" 
                                 data-slug="">
-                                <img alt="DOLCE" src="'.$post_thumbnail_url .'">
+                                <img alt="" src="'.$post_thumbnail_url .'">
                             <span class="hover middleParent" style="line-height: 213px;">
                                 <span class="bg"></span>
                                 <span class="middle">
@@ -613,24 +714,24 @@ class Tecnibo_Portfolio {
     public static function get_pdf_link ( $product_id ){
         
         $html = '';
-        $html = '<h2>'. __('Technical documents:','tecnibo') .'</h2>';
+        $html = '<h2>'. __('Documents techniques:','tecnibo') .'</h2>';
         $pdf_file = get_post_meta( $product_id, '_pdf_file', true );
         $pdf_file_1 = get_post_meta( $product_id, '_pdf_file_1', true );
         $pdf_file_2 = get_post_meta( $product_id, '_pdf_file_2', true );
         
         if ( ! empty($pdf_file) ){
             $pdf_name =  self::get_pdf_name( $pdf_file['url'] ) ;
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
         }
         
         if ( ! empty($pdf_file_1) ){
             $pdf_name_1 = self::get_pdf_name( $pdf_file_1['url'] );
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_1['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name_1 .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_1['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
         }        
        
         if ( ! empty($pdf_file_2) ){
             $pdf_name_2 = self::get_pdf_name( $pdf_file_2['url'] );
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_2['url'] .'"><i class="far fa-file-pdf"></i> '. $pdf_name_2 .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_2['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
         }        
 
         return $html;

@@ -44,7 +44,7 @@
         $('.project-photos').slickLightbox({
             background: 'rgb(255 255 255)',
             src: 'src',
-            itemSelector: '.projetc-item-image > img'
+            itemSelector: '.projetc-item-image  img'
         });
          
                 $('#tecnibo-canditate').click(function () {

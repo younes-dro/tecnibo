@@ -5,6 +5,7 @@
 jQuery(function($){
         
         $('#tecnibo_projects').select2({});
+        $('#tecnibo_variations').select2({});
 	// multiple select with AJAX search
 	$('#tecnibo_products').select2({
   		ajax: {

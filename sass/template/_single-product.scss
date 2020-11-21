@@ -52,14 +52,86 @@ body.single-tecnibo_product{
             font-size: 2.5em;
         }
         a.fiche-technique{
-        display: block;
-        i{
-            display: inline-block;
-            margin-left: 10px;
-        }
-    } 
+            display: block;
+            margin-bottom:10px;
+            i{
+                display: inline-block;
+                margin-left: 12px;
+                font-size: 18px;
+                margin-right: 5px;
+            }
+        } 
     }
+    div.product_variations{
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        div.row{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            a.col-12{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            a.col-md-4{
+                @media (min-width: 768px){
+                    -ms-flex: 0 0 33.333333%;
+                    flex: 0 0 33.333333%;
+                    max-width: 33.333333%;
 
+                }
+            }
+            a.col-sm-6{
+                @media (min-width: 576px){
+                    -ms-flex: 0 0 50%;
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+            }
+            a.col-lg-4{
+                @media (min-width: 992px){
+                    -ms-flex: 0 0 33.333333%;
+                    flex: 0 0 33.333333%;
+                    max-width: 33.333333%;
+                }
+            }
+
+            a{
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                background: #FFFFFF;
+
+                &:hover{
+                    /*box-shadow: 1px 0px 3px #000;*/
+                    /*border-bottom: 1px solid #fe5252;*/
+
+                }
+
+                h3{
+                    text-align: center;
+                    /* border: 1px solid; */
+                    /*background-color: #3c3b3b;*/
+                    color: #867e79;
+                    padding-top: 5px;
+                    padding-bottom: 5px; 
+                    font-size:20px;
+                    &:hover{
+                        color: #fe5252;
+                    }
+                }
+            }
+
+        }
+    }
 }
 
 
