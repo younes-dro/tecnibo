@@ -307,6 +307,7 @@ class Tecnibo{
                 || $post->post_type == 'tecnibo_project' 
                 || $post->post_type == 'tecnibo_member'
                 || $post->post_type == 'tecnibo_job'
+                || $post->post_type == 'tecnibo_customer'
                 || is_page_template( 'projects-page.php' ) 
                 || is_tax()
                 ) {

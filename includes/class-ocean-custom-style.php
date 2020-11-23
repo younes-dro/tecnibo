@@ -33,7 +33,8 @@ class Ocean_Custom_Style {
         global $post;
         if ($post->post_type == 'tecnibo_project' 
                 || $post->post_type == 'tecnibo_product' 
-                || $post->post_type == 'tecnibo_member' 
+                || $post->post_type == 'tecnibo_member'
+                || $post->post_type == 'tecnibo_customer' 
                 || is_page_template('projects-page.php')
                 || is_tax()
                 ) {

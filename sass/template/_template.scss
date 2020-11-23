@@ -4,7 +4,9 @@
 body.single-tecnibo_product , 
 body.single-tecnibo_project ,
 body.page-template-projects-page,
-body.tax-product_category{
+body.tax-product_category,
+body.post-type-archive-tecnibo_customer{
+    
     #content-wrap{
         padding-top: 10px;    
     }
@@ -79,3 +81,11 @@ body.tax-product_category{
 ## Single Project
 --------------------------------------------------------------*/
 @import "single-project";
+/*--------------------------------------------------------------
+## Team page
+--------------------------------------------------------------*/
+@import "team";
+/*--------------------------------------------------------------
+## Customer page
+--------------------------------------------------------------*/
+@import "customer";

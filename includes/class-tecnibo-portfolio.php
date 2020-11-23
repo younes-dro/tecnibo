@@ -748,9 +748,20 @@ class Tecnibo_Portfolio {
         
         $html .= '<div class="tecnibo-team">
                     <div class="row-team">';
+        
+        $the_slug = 'equipe';
+        $args=array(
+            'name'           => $the_slug,
+            'post_type'      => 'tecnibo_pages',
+            'post_status'    => 'publish',
+            'posts_per_page' => 1
+        );
+        $equipe = get_posts( $args );
+        $the_title = get_field('title_member', $equipe[0]->ID);
+        $the_text = get_field('text_member', $equipe[0]->ID);
         $html .= '<div class="heading-title">
-                    <h1>'.__( 'Our professionals', 'tecnibo' ) .' </h1>
-                    <p>'.__( 'Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend','tecnibo').' </p>
+                    <h1>'. $the_title .' </h1>
+                    <p>'. $the_text .'</p>
                   </div>';
         
         
@@ -822,6 +833,84 @@ class Tecnibo_Portfolio {
             $html .= '</div>';
             
             return $html;
+    }
+    public static function get_Customers(){
+        $html = '';
+        
+        $html .= '<section class="tecnibo-customer">
+                    <div class="row-customer">';
+        
+        $the_slug = 'clients';
+        $args=array(
+            'name'           => $the_slug,
+            'post_type'      => 'tecnibo_pages',
+            'post_status'    => 'publish',
+            'posts_per_page' => 1
+        );
+        $equipe = get_posts( $args );
+        $the_title = get_field('title_member', $equipe[0]->ID);
+        $the_text = get_field('text_member', $equipe[0]->ID);
+        $html .='<div class="customer-populated">';
+        $html .= '<h1>'. $the_title .' </h1>';
+        $html .=  $the_text ;
+        $html .= '</div>';
+        
+        // Outsourcing
+	$search_results = new WP_Query( array( 
+		'post_status' => 'publish',
+                'post_type' => 'tecnibo_customer' ,
+                'meta_key' => 'type_customer',
+                'meta_value' => 'outsourcing',
+		'ignore_sticky_posts' => 1,
+		'posts_per_page' => -1, 
+                'orderby' => 'title', 
+                'order' => 'ASC'
+	) );        
+	if( $search_results->have_posts() ) :
+            $html .= '<h2 class="related_products_projects"><span>'.__('Sous traitance','tecnibo').'</span></h2>';
+            $html .= '<section class="tecnibo-customsers tecnibo-row">';
+            
+            while( $search_results->have_posts() ) : $search_results->the_post();	
+                
+                $featured_img_url = get_the_post_thumbnail_url($search_results->post->ID);
+                $html .= '<div class="customer-item">';
+                $html .= '<img src="'.$featured_img_url.'" />';
+                $html .= '</div>';
+            endwhile;
+            $html .= '</section>';
+	endif;   
+        wp_reset_query();     
+        
+        // End Users
+	$search_results = new WP_Query( array( 
+		'post_status' => 'publish',
+                'post_type' => 'tecnibo_customer' ,
+                'meta_key' => 'type_customer',
+                'meta_value' => 'client',
+		'ignore_sticky_posts' => 1,
+		'posts_per_page' => -1, 
+                'orderby' => 'title', 
+                'order' => 'ASC'
+	) );        
+	if( $search_results->have_posts() ) :
+            $html .= '<h2 class="related_products_projects"><span>'.__('End Users','tecnibo').'</span></h2>';
+            $html .= '<section class="tecnibo-customsers tecnibo-row">';
+            
+            while( $search_results->have_posts() ) : $search_results->the_post();	
+                
+                $featured_img_url = get_the_post_thumbnail_url($search_results->post->ID);
+                $html .= '<div class="customer-item">';
+                $html .= '<img src="'.$featured_img_url.'" />';
+                $html .= '</div>';
+            endwhile;
+            $html .= '</section>';
+	endif;   
+        wp_reset_query();
+        
+        $html .= '</div>';
+        $html .= '</div>';        
+        
+        return $html;
     }
 }
 

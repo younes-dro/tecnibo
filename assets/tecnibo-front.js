@@ -41,15 +41,44 @@
     }
     $(document).ready(function () {
         $('.project-photos, .product-photos').slick(getSliderSettings( ));
+        $('.tecnibo-customsers').slick({
+            dots: true,
+            infinite: true,
+            rows: 3,
+            arrows: true,
+            speed: 300,
+            slidesPerRow: 4,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesPerRow: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesPerRow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesPerRow: 1
+                    }
+                }
+
+            ]
+        });
         $('.project-photos').slickLightbox({
             background: 'rgb(255 255 255)',
             src: 'src',
             itemSelector: '.projetc-item-image  img'
         });
-         
-                $('#tecnibo-canditate').click(function () {
-                    $(this).closest('.elementor-section').next().slideToggle();
-                });
+
+        $('#tecnibo-canditate').click(function () {
+            $(this).closest('.elementor-section').next().slideToggle();
+        });
         /* Product Display the full featured image carousel  */
         $('.element-carousel-product').on('click', function (event) {
             event.preventDefault();
