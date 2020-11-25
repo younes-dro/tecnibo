@@ -57,7 +57,7 @@ class Tecnibo_Labels {
 
         $product_category = array(
             'name' => __('Product Category', 'tecnibo'),
-            'singular_name' => __('Product Categoryt', 'tecnibo'),
+            'singular_name' => __('Product Category', 'tecnibo'),
             'search_items' => __('Search Product Category', 'tecnibo'),
             'all_items' => __('All Categories ', 'tecnibo'),
             'parent_item' => __('Parent Product Category', 'tecnibo'),
@@ -77,6 +77,7 @@ class Tecnibo_Labels {
             'public' => true,
             'hierarchical' => true,
             'show_in_rest' => true,
+            'show_admin_column' => true,
             'rewrite' => array(
                     'slug' => 'tecnibo-category',
                     'with_front' => true,
