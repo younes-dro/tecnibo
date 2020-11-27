@@ -1,0 +1,321 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tecnibo Plugin\n"
+"POT-Creation-Date: 2020-11-26 04:55+0100\n"
+"PO-Revision-Date: 2020-11-26 05:31+0100\n"
+"Last-Translator: \n"
+"Language-Team: Younes DRO\n"
+"Language: fr_BE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-tecnibo-helper.php:27
+msgid "Role"
+msgstr "Rôle"
+
+#: includes/class-tecnibo-helper.php:32
+msgid "The role of the team member"
+msgstr "Le rôle du membre de l'équipe"
+
+#: includes/class-tecnibo-labels.php:15 includes/class-tecnibo-labels.php:21
+#: includes/class-tecnibo-portfolio.php:516
+msgid "Products"
+msgstr "Produits"
+
+#: includes/class-tecnibo-labels.php:16
+msgid "Product"
+msgstr "Produit"
+
+#: includes/class-tecnibo-labels.php:17 includes/class-tecnibo-labels.php:98
+#: includes/class-tecnibo-labels.php:140
+msgid "Add New"
+msgstr "Ajouter nouveau"
+
+#: includes/class-tecnibo-labels.php:18
+msgid "Add New Product"
+msgstr "Ajouter un nouveau produit"
+
+#: includes/class-tecnibo-labels.php:19
+msgid "Edit Product"
+msgstr "Modifier le produit"
+
+#: includes/class-tecnibo-labels.php:20
+msgid "New Product"
+msgstr "Nouveau produit"
+
+#: includes/class-tecnibo-labels.php:22
+msgid "View Product"
+msgstr "Voir le produit"
+
+#: includes/class-tecnibo-labels.php:23
+msgid "Search Product"
+msgstr "Rechercher un produit"
+
+#: includes/class-tecnibo-labels.php:24
+msgid "No Products found"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:25
+msgid "No Products found in the Trash"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:31
+msgid "Add Products for Tecnibo Web site"
+msgstr "Ajouter des produits pour le site Web de Tecnibo"
+
+#: includes/class-tecnibo-labels.php:59 includes/class-tecnibo-labels.php:60
+#: includes/class-tecnibo-labels.php:69
+msgid "Product Category"
+msgstr "Catégorie de produit"
+
+#: includes/class-tecnibo-labels.php:61
+msgid "Search Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:62
+msgid "All Categories "
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:63
+msgid "Parent Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:64
+msgid "Parent Product Category:"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:65
+msgid "Edit Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:66
+msgid "Update Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:67
+msgid "Add New Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:68
+msgid "New Product Category"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:96 includes/class-tecnibo-labels.php:102
+#: includes/class-tecnibo-portfolio.php:516
+msgid "Projects"
+msgstr "Projets"
+
+#: includes/class-tecnibo-labels.php:97
+msgid "Project"
+msgstr "Projet"
+
+#: includes/class-tecnibo-labels.php:99
+msgid "Add New Project"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:100
+msgid "Edit Project"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:101
+msgid "New Project"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:103
+msgid "View Project"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:104
+msgid "Search Project"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:105
+msgid "No Projects found"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:106
+msgid "No Projects found in the Trash"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:112
+msgid "Add Projects for Tecnibo Web site"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:138
+msgid "Tecnibo Team"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:139 includes/class-tecnibo-labels.php:144
+msgid "Team"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:141
+msgid "Add New Member"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:142
+msgid "Edit Member"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:143
+msgid "New Member"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:145
+msgid "View Member"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:146
+msgid "Search Member"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:147
+msgid "No Members found"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:148
+msgid "No Members found in the Trash"
+msgstr ""
+
+#: includes/class-tecnibo-labels.php:154
+msgid "Add Member for Tecnibo Team"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:27
+msgid "Product Meta Data"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:28
+msgid "Variable Product"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:29
+msgid "Select products that are used by this project"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:30
+msgid "Project Details"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:31
+msgid "Social"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:70
+msgid "Projects:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:96
+msgid "Technical brochure 1: (<b>.pdf</b>)"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:104
+msgid "Technical brochure 2: (<b>.pdf</b>)"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:112
+msgid "Technical brochure 3: (<b>.pdf</b>)"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:124
+msgid "Show in MainMenu?"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:137
+msgid "Variations:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:195
+#: includes/class-tecnibo-portfolio.php:212
+#: includes/class-tecnibo-portfolio.php:229
+msgid "There was an error uploading your file. The error is: "
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:201
+#: includes/class-tecnibo-portfolio.php:218
+#: includes/class-tecnibo-portfolio.php:235
+msgid "The file type that you've uploaded is not a PDF."
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:270
+msgid "Products:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:375
+msgid "Scope:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:379
+msgid "Client:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:383
+msgid "Product:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:387
+msgid "Photography:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:391
+msgid "Video:(The format video link  https://www.youtube.com/<b>embed</b>/)"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:404
+msgid "LinkedIn ID:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:408
+msgid "Twitter ID:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:569
+msgid "Class \"Dynamic_Featured_Image\" not loaded"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:574
+msgid "Variations Disponibles:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:614
+msgid "Related Products"
+msgstr "Produits connexes"
+
+#: includes/class-tecnibo-portfolio.php:614
+msgid "Related Projects"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:631
+#: includes/class-tecnibo-portfolio.php:684
+msgid "See details"
+msgstr "Détails"
+
+#: includes/class-tecnibo-portfolio.php:689
+msgid "Sorry, no products or projects  matched your criteria."
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:717
+msgid "Documents techniques:"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:776
+msgid "show all"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:870
+msgid "Sous traitance"
+msgstr ""
+
+#: includes/class-tecnibo-portfolio.php:896
+msgid "End Users"
+msgstr ""
+
+#: includes/class-tecnibo-shortcode.php:30
+msgid "Job Document"
+msgstr ""

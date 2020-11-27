@@ -78,7 +78,7 @@ class Tecnibo{
         
         add_action( 'plugins_loaded', array ( $this , 'init_plugin') );
         
-        add_action( 'init' , array( $this , 'load_textdomain' ) );
+        add_action( 'plugins_loaded' , array( $this , 'load_textdomain' ) );
                
           
     }    
