@@ -721,17 +721,17 @@ class Tecnibo_Portfolio {
         
         if ( ! empty($pdf_file) ){
             $pdf_name =  self::get_pdf_name( $pdf_file['url'] ) ;
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file['url'] .'"><i class="ionicon ion-android-download"></i> '. self::get_pdf_name($pdf_file['url']) .'</a>';
         }
         
         if ( ! empty($pdf_file_1) ){
             $pdf_name_1 = self::get_pdf_name( $pdf_file_1['url'] );
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_1['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_1['url'] .'"><i class="ionicon ion-android-download"></i> '. self::get_pdf_name($pdf_file_1['url']) .'</a>';
         }        
        
         if ( ! empty($pdf_file_2) ){
             $pdf_name_2 = self::get_pdf_name( $pdf_file_2['url'] );
-            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_2['url'] .'"><i class="ionicon ion-android-download"></i> '. __('Download Brochure','tecnibo') .'</a>';
+            $html .= '<a class="fiche-technique" target="_blank" href="' . $pdf_file_2['url'] .'"><i class="ionicon ion-android-download"></i> '. self::get_pdf_name($pdf_file_2['url']) .'</a>';
         }        
 
         return $html;
