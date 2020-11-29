@@ -79,8 +79,8 @@ class Tecnibo{
         add_action( 'plugins_loaded', array ( $this , 'init_plugin') );
         
         add_action( 'plugins_loaded' , array( $this , 'load_textdomain' ) );
-               
-          
+        
+        
     }    
     
     /**
@@ -245,6 +245,11 @@ class Tecnibo{
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_project_metabox'  ) );
         add_action ( 'save_post' , array ( 'Tecnibo_Portfolio' , 'save_member_metabox'  ) );        
         add_action ( 'post_edit_form_tag', array( 'Tecnibo_Portfolio' , 'update_edit_form' ) );
+        
+        /******** MainMenu Order */
+        add_action( 'admin_menu', array( $this, 'tecnibo_mainmenu_order' ) );
+        add_action( 'admin_print_styles', array( $this, 'tecnibo_mainmenu_order_css' ) );
+        add_action( 'admin_print_scripts', array ( $this, 'tecnibo_mainmenu_order_js') );
                 
         /******** Scripts */
         add_action( 'admin_enqueue_scripts', array ( $this , 'enqueue_select2_scripts' ) );
@@ -294,7 +299,16 @@ class Tecnibo{
         }        
 
         return $single;        
-    }    
+    }  
+    public function tecnibo_mainmenu_order(){
+        Tecnibo_MainMenu_Order::init();
+    }
+    public function tecnibo_mainmenu_order_css(){
+        Tecnibo_MainMenu_Order::load_css();
+    }
+    public function tecnibo_mainmenu_order_js(){
+        Tecnibo_MainMenu_Order::load_js();
+    }
     public function enqueue_select2_scripts(){
         wp_enqueue_style('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' );
 	wp_enqueue_script('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ) );
@@ -350,6 +364,17 @@ class Tecnibo{
     * @return string
     */
     public function plugin_url(){
+        
+        return untrailingslashit( plugins_url( '/', __FILE__ ) );
+    
+    }
+    /**
+     * Get the plugin url outside the class
+    * @since 1.0.0
+    * 
+    * @return string
+    */
+    public static function get_plugin_url(){
         
         return untrailingslashit( plugins_url( '/', __FILE__ ) );
     

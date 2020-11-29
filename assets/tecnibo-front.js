@@ -64,6 +64,7 @@
                 {
                     breakpoint: 480,
                     settings: {
+                        rows: 2,
                         slidesPerRow: 1
                     }
                 }
