@@ -3,11 +3,14 @@
  */
 ;
 jQuery(document).ready(function(jQuery) {
-    
+        /* Select parent cat */
+        jQuery('#select-category').click(function(){
+            //
+        });
     	/* Submit button click event */
-	jQuery("#custom-loading").hide();
+	
 	jQuery("#order-submit").click(function(e) {
-            e.preventDefault();
+            jQuery("#custom-loading").css('display','inline-block');
             tecnibo_ordersubmit();
 	});
 });
@@ -27,6 +30,8 @@ function customtaxorder_addloadevent(){
             var changedList = this.id;
             var order = jQuery(this).sortable('toArray');
             var positions = order.join(',');
+            jQuery("#hidden-custom-order").val(positions);
+            jQuery("#order-submit").attr("disabled", false);
             
             console.log({
               id: changedList,
@@ -41,9 +46,6 @@ addLoadEvent(customtaxorder_addloadevent);
 function tecnibo_ordersubmit() {
 
 	/* Terms */
-	var newOrder = jQuery("ul.custom-order-mainmenu").sortable("toArray");
-	jQuery("#custom-loading").show();
-	jQuery("#hidden-custom-order").val(newOrder);
 
 	return true;
 }

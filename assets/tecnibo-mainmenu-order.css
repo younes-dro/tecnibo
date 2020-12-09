@@ -11,6 +11,14 @@
 div.misc-pub-section {
   max-width: 512px;
 }
+div.misc-pub-section:first-child {
+  margin-bottom: 20px;
+}
+div.misc-pub-section h1 {
+  border: 1px solid #dfdfdf;
+  background-color: #fff;
+  padding: 4px 8px 2px;
+}
 div.misc-pub-section ul.custom-order-mainmenu {
   list-style-type: none;
 }
@@ -32,6 +40,12 @@ div.misc-pub-section #publishing-action {
   text-align: right;
   float: right;
   line-height: 1.9;
+}
+div.misc-pub-section #publishing-action img#custom-loading {
+  margin-right: 10px;
+}
+div.misc-pub-section form#submit-parent-cat select#tecnibo-parent-cat {
+  margin-right: 10px;
 }
 
 /*# sourceMappingURL=tecnibo-mainmenu-order.css.map */

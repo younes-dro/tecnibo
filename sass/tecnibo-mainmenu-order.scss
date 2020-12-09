@@ -1,41 +1,57 @@
 
 
-    #icon-tecnibo{
-        background-image: url(images/mainmenu-order-page.png);
-        background-repeat: no-repeat;
-        margin: 0 10px 10px 0;
-        float: left;
-        width: 45px;
-        height: 45px;
-        background-size: contain;
-    } 
-    div.misc-pub-section{
-        max-width: 512px;
+#icon-tecnibo{
+    background-image: url(images/mainmenu-order-page.png);
+    background-repeat: no-repeat;
+    margin: 0 10px 10px 0;
+    float: left;
+    width: 45px;
+    height: 45px;
+    background-size: contain;
+} 
+div.misc-pub-section{
+    max-width: 512px;
+    &:first-child{
+        margin-bottom: 20px;
+    }
+    h1{
+        border: 1px solid #dfdfdf;
+        background-color: #fff;
+        padding: 4px 8px 2px;
+    }
 
-        ul.custom-order-mainmenu{
-            list-style-type: none;
+    ul.custom-order-mainmenu{
+        list-style-type: none;
 
-            li.lineitem{
-                border: 1px solid #dfdfdf;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                background-color: #fff;
-                cursor: move;
-                margin: 3px auto;
-                padding: 4px 8px 2px;
-                height: 24px;
-                line-height: 24px;
-            }
-            li.depth-1{
-                margin-left: 30px;
-            }
+        li.lineitem{
+            border: 1px solid #dfdfdf;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background-color: #fff;
+            cursor: move;
+            margin: 3px auto;
+            padding: 4px 8px 2px;
+            height: 24px;
+            line-height: 24px;
         }
-        #publishing-action{
-            text-align: right;
-            float: right;
-            line-height: 1.9;
+        li.depth-1{
+            margin-left: 30px;
         }
     }
+    #publishing-action{
+        text-align: right;
+        float: right;
+        line-height: 1.9;
+        img#custom-loading{
+            margin-right: 10px;
+        }
+    }
+    form#submit-parent-cat{
+        select#tecnibo-parent-cat{
+            margin-right: 10px;
+        }
+    }
+}
 
 
 

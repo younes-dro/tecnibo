@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tecnibo Plugin\n"
 "POT-Creation-Date: 2020-11-26 04:55+0100\n"
-"PO-Revision-Date: 2020-11-26 05:31+0100\n"
+"PO-Revision-Date: 2020-12-08 07:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: Younes DRO\n"
 "Language: fr_BE\n"
@@ -289,7 +289,7 @@ msgstr "Produits connexes"
 
 #: includes/class-tecnibo-portfolio.php:614
 msgid "Related Projects"
-msgstr ""
+msgstr "Projects connexes"
 
 #: includes/class-tecnibo-portfolio.php:631
 #: includes/class-tecnibo-portfolio.php:684

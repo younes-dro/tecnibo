@@ -262,6 +262,11 @@ class Tecnibo{
         add_action( 'wp_ajax_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );
         add_action( 'wp_ajax_nopriv_tecnibo_ajax_request_products', array ( $this , 'tecnibo_ajax_request_products' ) );
         
+        /*** Mainmenu order hooks */ 
+        add_action( 'create_product_category', array ( $this , 'term_create_success' ), 10, 2 );
+        add_action( 'delete_term_taxonomy', array ( $this , 'term_delete_success' ), 9, 1 ); 
+        add_action( 'save_post', array ( $this , 'product_create_success' ), 10, 1 );
+        
         /****** Helper */
         add_action( 'current_screen' , array ( $this , 'tecnibo_herlper' ) );
     }
@@ -346,6 +351,20 @@ class Tecnibo{
     public function tecnibo_ajax_request_products() {
         Tecnibo_Ajax::Get_Products();
     }
+    public function term_edit_success( $term_id, $tt_id ){
+        
+    }
+    public function term_create_success( $term_id, $tt_id ){
+        
+        Tecnibo_MainMenu_Order::hook_create_term( $term_id , $tt_id );
+    }
+    public function term_delete_success ( $tt_id ){
+        Tecnibo_MainMenu_Order::hook_delete_term( $tt_id );
+    }
+    public function product_create_success( $ID ){
+        Tecnibo_MainMenu_Order::hook_create_product( $ID );
+    }
+
 
     public function tecnibo_herlper(){
         $current_screen = get_current_screen();

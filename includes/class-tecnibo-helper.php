@@ -7,9 +7,9 @@
 class Tecnibo_Helper {
 
     function __construct() {
-
+        
         add_filter('gettext', array( $this, 'change_excerpt_box_label' ) , 10 , 2 );
-        add_filter('enter_title_here', array ( $this , 'change_title_place_holder' ) , 20 , 2 );
+        add_filter('enter_title_here', array ( $this , 'change_title_place_holder' ) , 20 , 2 );   
     }
     public function  change_title_place_holder( $title , $post ){
 
