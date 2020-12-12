@@ -266,6 +266,7 @@ class Tecnibo{
         add_action( 'create_product_category', array ( $this , 'term_create_success' ), 10, 2 );
         add_action( 'delete_term_taxonomy', array ( $this , 'term_delete_success' ), 9, 1 ); 
         add_action( 'save_post', array ( $this , 'product_create_success' ), 10, 1 );
+        add_action( 'wp_trash_post', array ( $this , 'product_trashed_success' ), 10, 1 );
         
         /****** Helper */
         add_action( 'current_screen' , array ( $this , 'tecnibo_herlper' ) );
@@ -364,7 +365,9 @@ class Tecnibo{
     public function product_create_success( $ID ){
         Tecnibo_MainMenu_Order::hook_create_product( $ID );
     }
-
+    public function product_trashed_success( $ID ){
+        Tecnibo_MainMenu_Order::hook_trashed_product( $ID );
+    }
 
     public function tecnibo_herlper(){
         $current_screen = get_current_screen();

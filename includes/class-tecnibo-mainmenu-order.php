@@ -347,6 +347,20 @@ class Tecnibo_MainMenu_Order {
         }
         
     }
+    public static function hook_trashed_product ( $ID ){
+        $display_mainmenu = get_post_meta( $ID ,'_display_mainmenu');
+        if( $display_mainmenu[0] == "yes" ){
+            $parent = get_the_terms( $ID, 'product_category' );
+            $mainmenu = 'mainmenu_'.$parent[0]->term_id;
+            $option_mainmenu = get_option( $mainmenu );
+            if( $option_mainmenu ){  
+                if( in_array( 'p_'.$ID, $option_mainmenu[$parent[0]->term_id] ) ){
+                    $option_mainmenu [$parent[0]->term_id] = array_diff( $option_mainmenu[$parent[0]->term_id], ['p_'.$ID] );
+                    update_option( $mainmenu , $option_mainmenu);
+                }
+            }
+        }
+    }
     public static function get_parent_term_id ( $term_id ){
         $term = get_term( $term_id );
         
