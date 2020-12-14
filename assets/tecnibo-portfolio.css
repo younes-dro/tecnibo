@@ -415,6 +415,7 @@ body.single-tecnibo_project div.project-meta p strong, body.single-tecnibo_proje
   padding: 0 10px;
   height: 60px;
   line-height: 60px;
+  font-size: 18px;
 }
 body.single-tecnibo_project section.tecnibo-row > h4 {
   font-size: 2.5em;
@@ -632,12 +633,12 @@ body.post-type-archive-tecnibo_customer div.customer-item img {
 }
 @media screen and (min-width: 600px) {
   body.post-type-archive-tecnibo_customer div.customer-item img {
-    max-width: 90%;
+    max-width: 50%;
   }
 }
 @media screen and (min-width: 1024px) {
   body.post-type-archive-tecnibo_customer div.customer-item img {
-    max-width: 100%;
+    max-width: 50%;
   }
 }
 
@@ -647,6 +648,9 @@ body.post-type-archive-tecnibo_customer div.customer-item img {
 /*--------------------------------------------------------------
 ## LightBoc
 --------------------------------------------------------------*/
+.slick-lightbox button.slick-lightbox-close:hover {
+  background-color: transparent !important;
+}
 .slick-lightbox .slick-lightbox-close:before {
   color: #000;
   font-size: 50px;
@@ -790,6 +794,17 @@ body.post-type-archive-tecnibo_customer div.customer-item img {
   right: 28px;
   bottom: 24px;
   text-align: center;
+  line-height: 286px;
+}
+@media screen and (min-width: 501px) and (max-width: 820px) {
+  #content .items a .hover {
+    line-height: 130px;
+  }
+}
+@media screen and (min-width: 821px) {
+  #content .items a .hover {
+    line-height: 185px;
+  }
 }
 #content .items a .hover .bg {
   background: #ffffff;

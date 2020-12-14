@@ -1,4 +1,9 @@
 .slick-lightbox{
+    button.slick-lightbox-close{
+        &:hover{
+            background-color: transparent!important;
+        }
+    }
     .slick-lightbox-close{
         &:before{
             color: #000;

@@ -80,6 +80,13 @@
             right: 28px;
             bottom: 24px;
             text-align: center;
+           line-height:286px;
+           @media screen and ( min-width: 501px ) and ( max-width: 820px){
+               line-height:130px;
+           }
+           @media screen and ( min-width: 821px ){
+               line-height:185px;
+           }
             .bg {
                 background: #ffffff;
                 position: absolute;
