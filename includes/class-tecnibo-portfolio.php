@@ -67,7 +67,7 @@ class Tecnibo_Portfolio {
         }
         
         $html = '';
-	$html .= '<p><label for="tecnibo_projects">'.__( 'Projects:','tecnibo').'</label><br />';
+	$html .= '<p><label for="tecnibo_projects">'.__( 'Projets:','tecnibo').'</label><br />';
         $html .= '<select id="tecnibo_projects" name="tecnibo_projects[]" multiple="multiple" style="width:99%;max-width:25em;">';        
 	$search_results = new WP_Query( array( 
 		'post_status' => 'publish',
@@ -264,10 +264,10 @@ class Tecnibo_Portfolio {
 	$appended_products = get_post_meta( $post_object->ID, '_related_products',false );
         
 	/*
-	 * Select Products with AJAX search
+	 * Select Produits with AJAX search
 	 */
         $html = '';
-	$html .= '<p><label for="tecnibo_products">'.__( 'Products:','tecnibo').'</label><br />';
+	$html .= '<p><label for="tecnibo_products">'.__( 'Produits:','tecnibo').'</label><br />';
         $html .= '<select id="tecnibo_products" name="tecnibo_products[]" multiple="multiple" style="width:99%;max-width:25em;">';
  
 	if( $appended_products ) {
@@ -484,9 +484,9 @@ class Tecnibo_Portfolio {
             $html .= '<header class="custom_tax_header" style="background-image: url('. $taxonomy_image_url .')">
                 <div class="overlay-achive-page"></div>
                 <h1 class="custom-tax-title">'.$sub_cat->name.'</h1></header> ';
-            // Products
+            // Produits
             $html .= self::get_archive_products_projetcs( 'tecnibo_product' , $taxonomy_id , $sub_cat->name);
-            // Projects
+            // Projets
             $html .= self::get_archive_products_projetcs( 'tecnibo_project' , $taxonomy_id , $sub_cat->name );  
             
         }
@@ -546,7 +546,7 @@ class Tecnibo_Portfolio {
         if ( $video ) 
             return Tecnibo_Portfolio::get_video( $project_meta );
         
-            return '<p><strong>'.$meta_title.':&nbsp;</strong><em>'.$project_meta.'</em></p>';
+            return '<p><strong>'.__($meta_title,'tecnibo').':&nbsp;</strong><em>'.$project_meta.'</em></p>';
         
     }
     public static function get_video( $video_url) {
@@ -624,7 +624,7 @@ class Tecnibo_Portfolio {
                                 rel="group" data-id="'.get_the_ID().'" 
                                 data-slug="">
                                 <img alt="" src="'.$post_thumbnail_url .'">
-                            <span class="hover middleParent" style="line-height: 213px;">
+                            <span class="hover middleParent">
                                 <span class="bg"></span>
                                 <span class="middle">
                                     <span class="title">'.$search_results->post->post_title.'</span>
@@ -677,7 +677,7 @@ class Tecnibo_Portfolio {
                     class="" 
                     rel="group" data-id="'.get_the_ID().'" data-slug="<?php //?>">
                     <img alt="" src="'. $featured_img_url .'">
-                    <span class="hover middleParent" style="line-height: 213px;">
+                    <span class="hover middleParent">
                         <span class="bg"></span>
                         <span class="middle">
                             <span class="title">'.get_the_title() .'</span>
@@ -867,7 +867,7 @@ class Tecnibo_Portfolio {
                 'order' => 'ASC'
 	) );        
 	if( $search_results->have_posts() ) :
-            $html .= '<h2 class="related_products_projects"><span>'.__('Sous traitance','tecnibo').'</span></h2>';
+            $html .= '<h2 class="related_products_projects"><span>'.__('Clients','tecnibo').'</span></h2>';
             $html .= '<section class="tecnibo-customsers tecnibo-row">';
             
             while( $search_results->have_posts() ) : $search_results->the_post();	
@@ -875,6 +875,7 @@ class Tecnibo_Portfolio {
                 $featured_img_url = get_the_post_thumbnail_url($search_results->post->ID);
                 $html .= '<div class="customer-item">';
                 $html .= '<img src="'.$featured_img_url.'" />';
+                $html .= '<input type="hidden" value="'. $search_results->post->ID .'"/>';
                 $html .= '</div>';
             endwhile;
             $html .= '</section>';
@@ -893,7 +894,7 @@ class Tecnibo_Portfolio {
                 'order' => 'ASC'
 	) );        
 	if( $search_results->have_posts() ) :
-            $html .= '<h2 class="related_products_projects"><span>'.__('End Users','tecnibo').'</span></h2>';
+            $html .= '<h2 class="related_products_projects"><span>'.__('Clients finaux','tecnibo').'</span></h2>';
             $html .= '<section class="tecnibo-customsers tecnibo-row">';
             
             while( $search_results->have_posts() ) : $search_results->the_post();	
