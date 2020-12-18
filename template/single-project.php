@@ -29,16 +29,16 @@ get_header(); ?>
                                 <div class="project-meta">
                                     <?php
                                         if ( Tecnibo_Portfolio::has_meta( '_project_scope' , get_the_ID() ) )
-                                            echo Tecnibo_Portfolio::get_product_meta ( 'Scope' , '_project_scope' , get_the_ID() ) ;
+                                            echo Tecnibo_Portfolio::get_product_meta ( 'Société' , '_project_scope' , get_the_ID() ) ;
 
                                         if ( Tecnibo_Portfolio::has_meta( '_project_client' , get_the_ID() ) )
                                             echo Tecnibo_Portfolio::get_product_meta ( 'Client' , '_project_client' , get_the_ID() );
                                         
                                         if ( Tecnibo_Portfolio::has_meta( '_project_product' , get_the_ID() ) )
-                                            echo Tecnibo_Portfolio::get_product_meta ( 'Product' , '_project_product' , get_the_ID() ) ;                                        
+                                            echo Tecnibo_Portfolio::get_product_meta ( 'Produits' , '_project_product' , get_the_ID() ) ;                                        
                                         
                                         if ( Tecnibo_Portfolio::has_meta( '_project_photography' , get_the_ID() ) )
-                                            echo Tecnibo_Portfolio::get_product_meta ( 'Photography' , '_project_photography' , get_the_ID() ) ;
+                                            echo Tecnibo_Portfolio::get_product_meta ( 'Photographie' , '_project_photography' , get_the_ID() ) ;
                                     ?>
                                 </div>
                             </section>
