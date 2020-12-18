@@ -93,17 +93,17 @@ class Tecnibo_Labels {
 
         /* Projets */
         $labels = array(
-            'name' => __('Projects', 'tecnibo'),
+            'name' => __('Projets', 'tecnibo'),
             'singular_name' => __('Project', 'tecnibo'),
             'add_new' => __('Add New', 'tecnibo'),
             'add_new_item' => __('Add New Project', 'tecnibo'),
             'edit_item' => __('Edit Project', 'tecnibo'),
             'new_item' => __('New Project', 'tecnibo'),
-            'all_items' => __('Projects', 'tecnibo'),
+            'all_items' => __('Projets', 'tecnibo'),
             'view_item' => __('View Project', 'tecnibo'),
             'search_items' => __('Search Project', 'tecnibo'),
-            'not_found' => __('No Projects found', 'tecnibo'),
-            'not_found_in_trash' => __('No Projects found in the Trash'),
+            'not_found' => __('No Projets found', 'tecnibo'),
+            'not_found_in_trash' => __('No Projets found in the Trash'),
             'parent_item_colon' => '',
             'menu_name' => 'Tecnibo'
         );
@@ -135,7 +135,7 @@ class Tecnibo_Labels {
 
         /* Team */
         $labels = array(
-            'name' => __('Tecnibo Team', 'tecnibo'),
+            'name' => __('Equipe Tecnibo', 'tecnibo'),
             'singular_name' => __('Team', 'tecnibo'),
             'add_new' => __('Add New', 'tecnibo'),
             'add_new_item' => __('Add New Member', 'tecnibo'),
