@@ -27,7 +27,7 @@ class Tecnibo_ShortCode {
        if ( $pdf  ){
            
            
-           $html .= '<a style="font-size:20px" href="' . $pdf['url'] . '"><i class="far fa-file-pdf"></i> '.__('Job Document', 'tecnibo').'</a>';
+           $html .= '<a style="font-size:20px" href="' . $pdf['url'] . '"><i class="far fa-file-pdf"></i> '.Tecnibo_PortFolio::get_pdf_name($pdf['url']).'</a>';
            
        }
        
