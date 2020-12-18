@@ -21,17 +21,14 @@
         overflow: hidden;
         position: relative;
         background: #FFFFFF;
-        @media screen and (max-width: 1400px){
-            width: 35%;
-        }
-        @media screen and (max-width: 1024px){
+        width: 100%;
+        @media screen and ( min-width: 769px){
             width: 50%;
+            
         }
-        @media screen and (max-width: 500px){
-            width: 100%;
+        @media screen and ( min-width: 992px){
+            width: 33.3333%;
         }
-
-
         img {
             display: block;
             width: 100%;
@@ -44,6 +41,13 @@
             -ms-transition: all 200ms ease-out;
             -o-transition: all 200ms ease-out;
             transition: all 200ms ease-out;
+            
+            @media screen and ( min-width: 769px){
+            
+            }
+            @media screen and ( min-width: 992px){
+                max-height: 244px;
+            }
         }
         &:hover{
             .hover {
@@ -80,7 +84,7 @@
             right: 28px;
             bottom: 24px;
             text-align: center;
-           line-height:286px;
+           line-height:170px;
            @media screen and ( min-width: 501px ) and ( max-width: 820px){
                line-height:130px;
            }

@@ -14,7 +14,7 @@ body.tax-product_category{
         position: relative;
         /* filter: grayscale(100%); */
         padding: 0;
-        min-height: 250px;
+        min-height: 400px;
         div.overlay-achive-page{
             background-color: #000;
             position: absolute;
@@ -52,7 +52,7 @@ body.tax-product_category{
             font-weight: 400;
             color: #867e79;
             line-height: 1.85;
-            max-width: 50%;
+            max-width: 90%;
             margin: 0 auto;
             padding: 0px 0px 0px 20px;   
             border-left: 1px solid;
@@ -62,6 +62,7 @@ body.tax-product_category{
             }
             &:last-child{
                 border-bottom: 1px solid;
+                padding-bottom: 10px;
             }
         }
     }

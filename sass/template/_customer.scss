@@ -45,14 +45,16 @@ body.post-type-archive-tecnibo_customer {
         margin: 30px auto;
         padding: 0 0 0 10px;
         @media screen and(min-width:768px){
-            padding: 0% 50% 0% 5%;
+            padding: 0 0 0 5%;
         }
         h1{
-            font-size: 20px;
             color: #000;
-            font-weight: 200;
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 60px 0 0;
+            text-align: left;
             @media screen and (min-width:992px){
-                font-size: 35px;
+                /*font-size: 35px;*/
             }
         }
     }
