@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Younes DRO\n"
-"POT-Creation-Date: 2020-12-11 11:12+0100\n"
-"PO-Revision-Date: 2020-12-11 11:24+0100\n"
+"POT-Creation-Date: 2020-12-12 17:11+0100\n"
+"PO-Revision-Date: 2020-12-12 17:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -12,8 +12,22 @@ msgstr ""
 "X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-tecnibo-dependencies.php:57
+#, php-format
+msgid ""
+"The minimum PHP version required for this plugin is %1$s. You are running "
+"%2$s."
+msgstr "La version PHP requis est %1$s. Vous avez %2$s."
+
+#: includes/class-tecnibo-dependencies.php:85
+#, php-format
+msgid ""
+"%s is not active, as it requires WordPress version %s or higher. Please "
+"%supdate WordPress &raquo;%s"
+msgstr ""
 
 #: includes/class-tecnibo-helper.php:27
 msgid "Role"
@@ -136,11 +150,11 @@ msgstr "Recherche Projet"
 
 #: includes/class-tecnibo-labels.php:105
 msgid "No Projets found"
-msgstr ""
+msgstr "Pas de projets trouvés"
 
 #: includes/class-tecnibo-labels.php:106
 msgid "No Projets found in the Trash"
-msgstr ""
+msgstr "Pas de projets trouvés dans la corbeille"
 
 #: includes/class-tecnibo-labels.php:112
 msgid "Add Projects for Tecnibo Web site"
@@ -207,6 +221,14 @@ msgstr "Sélectionnez une catégorie"
 #: includes/class-tecnibo-mainmenu-order.php:131
 msgid "Update Order"
 msgstr "Mettre à jour l'ordre"
+
+#: includes/class-tecnibo-mainmenu-order.php:307
+msgid "Order updated successfully."
+msgstr "La mise à jour de l'ordre est effectuée avec succès."
+
+#: includes/class-tecnibo-mainmenu-order.php:309
+msgid "Order updated failed. Please try again."
+msgstr "La mise à jour a échoué. Veuillez réessayer."
 
 #: includes/class-tecnibo-portfolio.php:27
 msgid "Product Meta Data"
@@ -367,6 +389,19 @@ msgstr "Supprimer image"
 #: includes/class-tecnibo-taxonomy-images.php:111
 msgid "Insert"
 msgstr "Insérer"
+
+#: tecnibo.php:111 tecnibo.php:124
+#, php-format
+msgid "You cannot clone instances of %s."
+msgstr ""
+
+#: tecnibo.php:141
+msgid " could not be activated. "
+msgstr ""
+
+#: tecnibo.php:159
+msgid " has been deactivated. "
+msgstr ""
 
 #: template/single-project.php:26
 msgid "Overview"

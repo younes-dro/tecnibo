@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Younes DRO\n"
-"POT-Creation-Date: 2020-12-11 11:10+0100\n"
-"PO-Revision-Date: 2020-12-11 11:27+0100\n"
+"POT-Creation-Date: 2020-12-12 17:03+0100\n"
+"PO-Revision-Date: 2020-12-12 17:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -12,8 +12,22 @@ msgstr ""
 "X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-tecnibo-dependencies.php:57
+#, php-format
+msgid ""
+"The minimum PHP version required for this plugin is %1$s. You are running "
+"%2$s."
+msgstr "La version PHP requis est %1$s. Vous avez %2$s."
+
+#: includes/class-tecnibo-dependencies.php:85
+#, php-format
+msgid ""
+"%s is not active, as it requires WordPress version %s or higher. Please "
+"%supdate WordPress &raquo;%s"
+msgstr ""
 
 #: includes/class-tecnibo-helper.php:27
 msgid "Role"
@@ -108,71 +122,71 @@ msgstr "Nouvelle catégorie de produit"
 
 #: includes/class-tecnibo-labels.php:96 includes/class-tecnibo-labels.php:102
 msgid "Projets"
-msgstr ""
+msgstr "Projets"
 
 #: includes/class-tecnibo-labels.php:97
 msgid "Project"
-msgstr ""
+msgstr "Projet"
 
 #: includes/class-tecnibo-labels.php:99
 msgid "Add New Project"
-msgstr ""
+msgstr "Ajouter un nouveau projet"
 
 #: includes/class-tecnibo-labels.php:100
 msgid "Edit Project"
-msgstr ""
+msgstr "Modifier Projet"
 
 #: includes/class-tecnibo-labels.php:101
 msgid "New Project"
-msgstr ""
+msgstr "Nouveau Projet"
 
 #: includes/class-tecnibo-labels.php:103
 msgid "View Project"
-msgstr ""
+msgstr "Voir Projet"
 
 #: includes/class-tecnibo-labels.php:104
 msgid "Search Project"
-msgstr ""
+msgstr "Recherche Projet"
 
 #: includes/class-tecnibo-labels.php:105
 msgid "No Projets found"
-msgstr ""
+msgstr "Pas de projets trouvés"
 
 #: includes/class-tecnibo-labels.php:106
 msgid "No Projets found in the Trash"
-msgstr ""
+msgstr "Pas de projets trouvés dans la corbeille"
 
 #: includes/class-tecnibo-labels.php:112
 msgid "Add Projects for Tecnibo Web site"
-msgstr ""
+msgstr "Ajouter Projets pour Le site Tecnibo"
 
 #: includes/class-tecnibo-labels.php:138
 msgid "Equipe Tecnibo"
-msgstr ""
+msgstr "Équipe Tecnibo"
 
 #: includes/class-tecnibo-labels.php:139 includes/class-tecnibo-labels.php:144
 msgid "Team"
-msgstr ""
+msgstr "Équipe"
 
 #: includes/class-tecnibo-labels.php:141
 msgid "Add New Member"
-msgstr ""
+msgstr "Ajouter un nouveau member"
 
 #: includes/class-tecnibo-labels.php:142
 msgid "Edit Member"
-msgstr ""
+msgstr "Modifier le member"
 
 #: includes/class-tecnibo-labels.php:143
 msgid "New Member"
-msgstr ""
+msgstr "Nouveau member"
 
 #: includes/class-tecnibo-labels.php:145
 msgid "View Member"
-msgstr ""
+msgstr "Voir member"
 
 #: includes/class-tecnibo-labels.php:146
 msgid "Search Member"
-msgstr ""
+msgstr "Rechercher un member"
 
 #: includes/class-tecnibo-labels.php:147
 msgid "No Members found"
@@ -189,40 +203,48 @@ msgstr ""
 #: includes/class-tecnibo-mainmenu-order.php:20
 #: includes/class-tecnibo-mainmenu-order.php:33
 msgid "Main Menu Order"
-msgstr ""
+msgstr "Ordre du menu principale"
 
 #: includes/class-tecnibo-mainmenu-order.php:21
 msgid "Sort MainMenu"
-msgstr ""
+msgstr "Trier le menu principal"
 
 #: includes/class-tecnibo-mainmenu-order.php:76
 msgid "Select a parent category"
-msgstr ""
+msgstr "Sélectionner une catégorie"
 
 #: includes/class-tecnibo-mainmenu-order.php:81
 msgid "Select Category to order"
-msgstr ""
+msgstr "Sélectionnez une catégorie"
 
 #: includes/class-tecnibo-mainmenu-order.php:111
 #: includes/class-tecnibo-mainmenu-order.php:131
 msgid "Update Order"
-msgstr ""
+msgstr "Mettre à jour l'ordre"
+
+#: includes/class-tecnibo-mainmenu-order.php:307
+msgid "Order updated successfully."
+msgstr "La mise à jour de l'ordre est effectuée avec succès."
+
+#: includes/class-tecnibo-mainmenu-order.php:309
+msgid "Order updated failed. Please try again."
+msgstr "La mise à jour a échoué. Veuillez réessayer."
 
 #: includes/class-tecnibo-portfolio.php:27
 msgid "Product Meta Data"
-msgstr ""
+msgstr "Métadonnées du produit"
 
 #: includes/class-tecnibo-portfolio.php:28
 msgid "Variable Product"
-msgstr ""
+msgstr "Produit variable"
 
 #: includes/class-tecnibo-portfolio.php:29
 msgid "Select products that are used by this project"
-msgstr ""
+msgstr "Sélectionnez les produits utilisés par ce projet"
 
 #: includes/class-tecnibo-portfolio.php:30
 msgid "Project Details"
-msgstr ""
+msgstr "Détails du projet"
 
 #: includes/class-tecnibo-portfolio.php:31
 msgid "Social"
@@ -234,35 +256,37 @@ msgstr ""
 
 #: includes/class-tecnibo-portfolio.php:96
 msgid "Technical brochure 1: (<b>.pdf</b>)"
-msgstr ""
+msgstr "Brochure technique 1: (<b>.pdf</b>)"
 
 #: includes/class-tecnibo-portfolio.php:104
 msgid "Technical brochure 2: (<b>.pdf</b>)"
-msgstr ""
+msgstr "Brochure technique 2: (<b>.pdf</b>)"
 
 #: includes/class-tecnibo-portfolio.php:112
 msgid "Technical brochure 3: (<b>.pdf</b>)"
-msgstr ""
+msgstr "Brochure technique 3: (<b>.pdf</b>)"
 
 #: includes/class-tecnibo-portfolio.php:124
 msgid "Show in MainMenu?"
-msgstr ""
+msgstr "Afficher dans le Menu Principale?"
 
 #: includes/class-tecnibo-portfolio.php:137
 msgid "Variations:"
-msgstr ""
+msgstr "Déclinaisons:"
 
 #: includes/class-tecnibo-portfolio.php:195
 #: includes/class-tecnibo-portfolio.php:212
 #: includes/class-tecnibo-portfolio.php:229
 msgid "There was an error uploading your file. The error is: "
 msgstr ""
+"Une erreur s'est produite lors du téléchargement de votre fichier. L'erreur "
+"est: "
 
 #: includes/class-tecnibo-portfolio.php:201
 #: includes/class-tecnibo-portfolio.php:218
 #: includes/class-tecnibo-portfolio.php:235
 msgid "The file type that you've uploaded is not a PDF."
-msgstr ""
+msgstr "Le type de fichier que vous avez téléchargé n'est pas un PDF."
 
 #: includes/class-tecnibo-portfolio.php:270
 msgid "Produits:"
@@ -270,23 +294,23 @@ msgstr ""
 
 #: includes/class-tecnibo-portfolio.php:375
 msgid "Scope:"
-msgstr ""
+msgstr "Le cadre:"
 
 #: includes/class-tecnibo-portfolio.php:379
 msgid "Client:"
-msgstr ""
+msgstr "Client:"
 
 #: includes/class-tecnibo-portfolio.php:383
 msgid "Product:"
-msgstr ""
+msgstr "Produit:"
 
 #: includes/class-tecnibo-portfolio.php:387
 msgid "Photography:"
-msgstr ""
+msgstr "Photographie:"
 
 #: includes/class-tecnibo-portfolio.php:391
 msgid "Video:(The format video link  https://www.youtube.com/<b>embed</b>/)"
-msgstr ""
+msgstr "Vidéo:(Le lien vidéo au format  https://www.youtube.com/<b>embed</b>/)"
 
 #: includes/class-tecnibo-portfolio.php:404
 msgid "LinkedIn ID:"
@@ -298,9 +322,9 @@ msgstr ""
 
 #: includes/class-tecnibo-portfolio.php:516
 #, fuzzy
-#| msgid "Related Projects"
+#| msgid "Project"
 msgid "Projects"
-msgstr "Projets apparentés"
+msgstr "Projet"
 
 #: includes/class-tecnibo-portfolio.php:569
 msgid "Class \"Dynamic_Featured_Image\" not loaded"
@@ -321,11 +345,11 @@ msgstr "Projets apparentés"
 #: includes/class-tecnibo-portfolio.php:631
 #: includes/class-tecnibo-portfolio.php:684
 msgid "See details"
-msgstr ""
+msgstr "Détails"
 
 #: includes/class-tecnibo-portfolio.php:689
 msgid "Sorry, no products or projects  matched your criteria."
-msgstr ""
+msgstr "Désolé, aucun produit ou projet ne correspond à vos critères."
 
 #: includes/class-tecnibo-portfolio.php:717
 msgid "Documents techniques:"
@@ -333,40 +357,51 @@ msgstr ""
 
 #: includes/class-tecnibo-portfolio.php:776
 msgid "show all"
-msgstr "Montrer tout"
+msgstr "montrer tout"
 
 #: includes/class-tecnibo-portfolio.php:870
 msgid "Clients"
-msgstr ""
+msgstr "Clients"
 
 #: includes/class-tecnibo-portfolio.php:897
 msgid "Clients finaux"
-msgstr ""
+msgstr "Clients finaux"
 
 #: includes/class-tecnibo-shortcode.php:30
 msgid "Job Document"
-msgstr ""
+msgstr "Document"
 
 #: includes/class-tecnibo-taxonomy-images.php:41
 #: includes/class-tecnibo-taxonomy-images.php:70
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #: includes/class-tecnibo-taxonomy-images.php:45
 #: includes/class-tecnibo-taxonomy-images.php:81
-#, fuzzy
-#| msgid "Add New"
 msgid "Add Image"
-msgstr "Ajouter nouveau"
+msgstr "Ajouter image"
 
 #: includes/class-tecnibo-taxonomy-images.php:46
 #: includes/class-tecnibo-taxonomy-images.php:82
 msgid "Remove Image"
-msgstr ""
+msgstr "Supprimer image"
 
 #: includes/class-tecnibo-taxonomy-images.php:111
 msgid "Insert"
 msgstr "Insérer"
+
+#: tecnibo.php:111 tecnibo.php:124
+#, php-format
+msgid "You cannot clone instances of %s."
+msgstr ""
+
+#: tecnibo.php:141
+msgid " could not be activated. "
+msgstr ""
+
+#: tecnibo.php:159
+msgid " has been deactivated. "
+msgstr ""
 
 #: template/single-project.php:26
 msgid "Overview"
