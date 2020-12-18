@@ -30,7 +30,7 @@ class Tecnibo_MainMenu_Order {
      ?>
     	<div class="wrap tecnibo-maimenu-order">
             <div id="icon-tecnibo"></div>
-            <h1><?php _e('Main Menu Order','tecnico')?></h1>
+            <h1><?php _e('Main Menu Order','tecnibo')?></h1>
                 <div id="poststuff" class="metabox-holder">
                     <div class="widget order-widget">
                         <div class="misc-pub-section">
@@ -340,10 +340,13 @@ class Tecnibo_MainMenu_Order {
             $parent = get_the_terms( $ID, 'product_category' );
             $mainmenu = 'mainmenu_'.$parent[0]->term_id;
             $option_mainmenu = get_option( $mainmenu );
-            if( $option_mainmenu ){   
-                $option_mainmenu[$parent[0]->term_id][] = 'p_'.$ID;
-                update_option( $mainmenu , $option_mainmenu );
-            }            
+             if( ! in_array( 'p_'.$ID, $option_mainmenu[$parent[0]->term_id] ) ){
+                if( $option_mainmenu ){   
+                    $option_mainmenu[$parent[0]->term_id][] = 'p_'.$ID;
+                    update_option( $mainmenu , $option_mainmenu );
+                }           
+             }
+           
         }
         
     }
