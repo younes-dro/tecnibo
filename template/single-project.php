@@ -60,10 +60,15 @@ get_header(); ?>
                             <div class="divider"><hr class="flush"></div>
                     <?php } ?>
                             
+                    <?php  if( trim(str_replace('&nbsp;','',strip_tags( get_the_content() ) ) ) !== '' ){ ?>
                             <section class="tecnibo-row">
-                                <?php the_content() ?>
-                            </section>
+                                <?php the_content() ; ?>
+                            </section>   
                             <div class="divider"><hr class="flush"></div>
+                    <?php } ?>
+
+                            
+                            
                             <?php if ( Tecnibo_Portfolio::has_meta( '_project_video' , get_the_ID() ) ){ ?>
                             <section class="tecnibo-row">
                                 <?php  echo Tecnibo_Portfolio::get_product_meta ( '' , '_project_video' , get_the_ID() , true ); ?>
@@ -73,11 +78,8 @@ get_header(); ?>
                             <?php do_action( 'ocean_social_share' ); ?>
                             <?php
                             // Related Products
-                            if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>
-                            <section class="tecnibo-row">
+                            if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>                            
                                <?php echo Tecnibo_Portfolio::get_related_products_projects ( '_related_products' , get_the_ID() , 'tecnibo_product' ); ?>
-                            </section>
-                            <div class="divider"><hr class="flush"></div>
                            <?php } ?>
                             <?php do_action( 'ocean_before_content_inner' ); ?>
 

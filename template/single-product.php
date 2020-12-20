@@ -61,10 +61,7 @@ get_header(); ?>
                             <?php
                             //Related Projects 
                             if ( Tecnibo_Portfolio::has_related_objects( get_the_ID() ) ){ ?>
-                            <section class="tecnibo-row">
                                <?php echo Tecnibo_Portfolio::get_related_products_projects ( '_related_projects' , get_the_ID() , 'tecnibo_project' ); ?>
-                            </section>
-                            <div class="divider"><hr class="flush"></div>
                            <?php } ?>
                             <?php do_action( 'ocean_before_content_inner' ); ?>
 

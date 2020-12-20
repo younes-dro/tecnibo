@@ -614,9 +614,10 @@ class Tecnibo_Portfolio {
         ) );
         $related = ( $post_type == 'tecnibo_product') ? __( 'Related Products','tecnibo' ) : __( 'Related Projects' , 'tecnibo' );
         $html ='';
-        $html .= '<h2 class="related_products_projects"><span>' . $related . '</span></h2>';
-        $html .= '<div class="items">';
-       
+       if( $search_results->have_posts() ):
+           $html .= '<section class="tecnibo-row">';
+            $html .= '<h2 class="related_products_projects"><span>' . $related . '</span></h2>';
+            $html .= '<div class="items">';
 		while( $search_results->have_posts() ) : $search_results->the_post();	
 			$post_thumbnail_url = get_the_post_thumbnail_url( $search_results->post->ID, 'see-details' ); 
                         
@@ -636,8 +637,11 @@ class Tecnibo_Portfolio {
                            
                             
 		endwhile;
+                $html .= '</div><!-- #items -->';
+                $html .= '</section>';
+                $html .= '<div class="divider"><hr class="flush"></div>';
+            endif;
                  wp_reset_query();
-        $html .= '</div><!-- #items -->';
         
         return $html;
     }
