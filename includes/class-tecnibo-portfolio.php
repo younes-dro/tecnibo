@@ -512,10 +512,11 @@ class Tecnibo_Portfolio {
         
         $query = new WP_Query($args);
         if ( $query->have_posts() ) : 
+            $tout = ( $parent_cat) ? 'Tout les ':'';
             $html   = '<div class="product_grid">';
-            $related = ( $type == 'tecnibo_product') ? __( 'Products','tecnibo' ) : __( 'Projects' , 'tecnibo' );
+            $related = ( $type == 'tecnibo_product') ? __( $tout . 'Produits de ','tecnibo' ) : __( $tout. 'Projets de ' , 'tecnibo' );
             
-            $html .= '<h2 class="related_products_projects"><span>' . $term_name . ' ' .$related . '</span></h2>'; 
+            $html .= '<h2 class="related_products_projects"><span>' .$related . $term_name . '</span></h2>'; 
             $html .='<div class="items">';
             while ( $query->have_posts() ) : $query->the_post();
             $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
