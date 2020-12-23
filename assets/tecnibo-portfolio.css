@@ -107,7 +107,7 @@ body.tax-product_category #content-wrap {
 body.tax-product_category header.custom_tax_header {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 10% 60%;
   margin-bottom: 30px;
   display: flex;
   align-items: center;
