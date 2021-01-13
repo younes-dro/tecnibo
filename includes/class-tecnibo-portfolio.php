@@ -519,7 +519,8 @@ class Tecnibo_Portfolio {
             $html .= '<h2 class="related_products_projects"><span>' .$related . $term_name . '</span></h2>'; 
             $html .='<div class="items">';
             while ( $query->have_posts() ) : $query->the_post();
-            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
+            //$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
+            $featured_img_url = ( get_the_post_thumbnail_url(get_the_ID(), 'see-details') ) ? get_the_post_thumbnail_url(get_the_ID(), 'see-details'): get_stylesheet_directory_uri().'/assets/no-image.png';
             $html .='<a 
                     title = "'.get_the_title().'" 
                     href  ="'.get_the_permalink().'" 
@@ -676,7 +677,8 @@ class Tecnibo_Portfolio {
         $html   = '<div class="items">';
         $query = new WP_Query($args);
         if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
-            $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
+            //$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'see-details');
+            $featured_img_url = ( get_the_post_thumbnail_url(get_the_ID(), 'see-details') ) ? get_the_post_thumbnail_url(get_the_ID(), 'see-details'): get_stylesheet_directory_uri().'/assets/no-image.png';
             $html .='<a 
                     href="'.get_the_permalink().'" 
                     class="" 
